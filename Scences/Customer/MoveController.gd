@@ -1,0 +1,43 @@
+# 客户移动的控制类
+# 从屏幕的左边走到屏幕的中间，如过前面已经有客户了，需要和他保持一定的距离
+
+extends Node2D
+
+signal need_speak_signal(roleName)
+
+var force = 500
+var speed = 10 #移动速度的比例
+var isSpeaking = false # 是否正在说话
+# 角色及对话数据信息
+var roleData = {
+	roleName = "hh"
+}
+onready var parent :RigidBody2D = get_parent()
+
+
+func move(delta):
+	parent.set_axis_velocity(Vector2(speed*force*delta,0))
+	isSpeaking = false
+
+# 判断是否需要对话，如果需要对话，则发送需要对话的信号，对话组件内会接收这个信息进行处理
+func speak():
+	if isSpeaking:
+		return
+	isSpeaking = true
+	emit_signal("need_speak_signal",roleData.get("roleName"))
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	var root:Viewport = get_node("/root") # 获取根视图，通过根视图来获取显示区域大小
+	var centerX = root.get_size_override().x * 0.48 #屏幕中心的位置
+	var bodyX = parent.get_global_transform().origin.x #角色的位置
+	if bodyX < centerX :
+		move(delta)
+	elif bodyX < centerX + 100:
+		speak()
+	else:
+		isSpeaking = false
+
+
+
