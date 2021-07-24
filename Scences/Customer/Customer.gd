@@ -1,6 +1,6 @@
 # 客户管理类
 
-extends RigidBody2D
+extends KinematicBody2D
 
 
 onready var moveController = $MoveController 
@@ -10,3 +10,4 @@ onready var dialogueContronller = $DialogueConroller
 func setData(data):
 	moveController.roleData = data
 	dialogueContronller.roleData = data
+	

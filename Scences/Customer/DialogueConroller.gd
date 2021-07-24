@@ -4,13 +4,29 @@ extends Node2D
 
 var roleData={}
 var isShowDialogue = false
-onready var parent : RigidBody2D = get_parent()
-onready var DialoguePanel = load("res://Scences/Dialogue/DialguePanel.tscn")
+onready var parent : Node2D = get_parent()
+onready var dialoguePanel = get_tree().current_scene.find_node("DialoguePanel")
+onready var sprite : Sprite = get_node("../Sprite")
+onready var optionPanel = get_tree().current_scene.find_node("OptionPanel")
+
+func _ready():
+	optionPanel.connect("make_choose",self,"makeChoose")
 
 
-func showDialogue(roleName):
-	print("开始说话吧:"+str(roleName))
-	pass
+# 显示对话气泡
+func showDialogue():
+	isShowDialogue = true
+	var size = sprite.get_rect().size * sprite.transform.get_scale()
+	var p = parent.global_position + Vector2(size.x / 2 , -size.y)
+	dialoguePanel.set_global_position(p)
+	var dialogueMap = roleData.get("dialogMap")
+	if dialogueMap == null:
+		return
+	var dialogueItem = dialogueMap.get(roleData.get("dialogueIndex"))
+	if dialogueItem == null:
+		return
+	dialoguePanel.setText(dialogueItem)
+	
 
 # 接收到需要对话的指令
 func _on_MoveController_need_speak_signal(roleName):
@@ -18,6 +34,13 @@ func _on_MoveController_need_speak_signal(roleName):
 	if roleData.get("roleName") != roleName:
 		return
 	if not isShowDialogue:
-		showDialogue(roleName)
-	
+		showDialogue()
+		
+
+func makeChoose(selectOption):
+	if not isShowDialogue:
+		return
+	roleData["dialogueIndex"] = selectOption["jump"]
+	isShowDialogue = false
+	showDialogue()
 	

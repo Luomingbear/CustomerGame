@@ -6,17 +6,17 @@ extends Node2D
 signal need_speak_signal(roleName)
 
 var force = 500
-var speed = 10 #移动速度的比例
+var speed = 20 # 移动速度的比例
 var isSpeaking = false # 是否正在说话
 # 角色及对话数据信息
 var roleData = {
 	roleName = "hh"
 }
-onready var parent :RigidBody2D = get_parent()
+onready var parent : KinematicBody2D = get_parent()
 
 
 func move(delta):
-	parent.set_axis_velocity(Vector2(speed*force*delta,0))
+	parent.move_and_slide(Vector2(speed*force*delta,0))
 	isSpeaking = false
 
 # 判断是否需要对话，如果需要对话，则发送需要对话的信号，对话组件内会接收这个信息进行处理

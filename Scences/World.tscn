@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scences/Customer/Customer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scences/Option/OptionPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scences/World/World.gd" type="Script" id=2]
+[ext_resource path="res://Scences/Dialogue/DialoguePanel.tscn" type="PackedScene" id=3]
 
-[sub_resource type="SegmentShape2D" id=2]
+[sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 1500, 0 )
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 script/source = "extends CollisionShape2D
 
 
@@ -25,7 +26,7 @@ func _ready():
 #	pass
 "
 
-[node name="World" type="Node2D"]
+[node name="World" type="YSort"]
 script = ExtResource( 2 )
 
 [node name="Floor" type="Node2D" parent="."]
@@ -37,22 +38,21 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
-shape = SubResource( 2 )
-script = SubResource( 3 )
+shape = SubResource( 1 )
+script = SubResource( 2 )
 
-[node name="Customer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 387.98, 427.907 )
+[node name="CustomerLayer" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="MenuUI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 4
 
-[node name="DialogueUI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="OptionPanel" parent="UILayer" instance=ExtResource( 1 )]
+margin_left = 123.16
+margin_top = 366.603
+margin_right = -656.84
+margin_bottom = -53.3972
+
+[node name="DialoguePanel" parent="UILayer" instance=ExtResource( 3 )]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
