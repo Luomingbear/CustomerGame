@@ -1,0 +1,256 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Themes/DialogTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scences/Settlement/Settlement.gd" type="Script" id=2]
+[ext_resource path="res://Images/chaping.png" type="Texture" id=3]
+[ext_resource path="res://Images/coin.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/PixelFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Themes/Coin.tres" type="Theme" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "EvaluateShow"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("EvaluateTexture:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EvaluateTexture:rect_position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 438.413, -10.5834 ), Vector2( 367.676, 21.9559 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "SettlementHide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("EvaluateTexture:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "SettlementShow"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "onSettlementShowAnimationFinished"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("EvaluateTexture:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Settlement" type="Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.000394797
+anchor_top = 0.00324254
+anchor_right = 1.00039
+anchor_bottom = 1.00324
+margin_left = -1.83929
+margin_top = 1.03296
+margin_right = -1.83936
+margin_bottom = 1.03296
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -150.0
+margin_right = 250.0
+margin_bottom = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control"]
+margin_right = 500.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 19.6482
+margin_right = 20.0
+margin_bottom = 35.6482
+theme = ExtResource( 1 )
+text = "结算"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OKBtn" type="Button" parent="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -22.0
+margin_top = -36.0892
+margin_right = 22.0
+margin_bottom = -14.0892
+theme = ExtResource( 1 )
+text = "确定"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EvaluateTexture" type="TextureRect" parent="Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -61.5865
+margin_top = -10.5834
+margin_right = 38.4135
+margin_bottom = 89.4166
+rect_rotation = 30.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -15.0
+margin_right = 100.0
+margin_bottom = 17.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
+margin_right = 30.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="CoinText" type="RichTextLabel" parent="Control/HBoxContainer"]
+margin_left = 34.0
+margin_right = 200.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+custom_fonts/mono_font = ExtResource( 5 )
+custom_colors/default_color = Color( 1, 0.890196, 0, 1 )
+bbcode_text = "100=10+21"
+text = "100=10+21"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+anims/EvaluateShow = SubResource( 1 )
+anims/SettlementHide = SubResource( 3 )
+anims/SettlementShow = SubResource( 2 )
+
+[connection signal="button_down" from="Control/OKBtn" to="." method="_on_OKBtn_button_down"]

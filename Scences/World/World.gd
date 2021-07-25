@@ -5,19 +5,31 @@ extends Node2D
 onready var Customer = load("res://Scences/Customer/Customer.tscn")
 onready var layer = $CustomerLayer
 
+var time = 0
+var CREATE_CUSTOMER_DELAY = 10
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	loadDataFromDisk()
-	test()
+	test("101")
+	
+func _process(delta):
+	time +=delta
+	if time > CREATE_CUSTOMER_DELAY:
+		if layer.get_child_count() < 4:
+			time = 0
+			test("102"+str(layer.get_child_count()))
 	
 	
-func test():
+func test(roleName):
 	var obj = {
-		"roleName" : "101", #角色名
+		"roleName" : roleName, #角色名
+		"isNeedReturnGoods" : true, # 是否需要退货
 		"dialogueIndex" : "1001", # 当前正在说的话的tetxId
 		"dialogMap" : {
 			"1001" : {
 				"text":"你这个东西质量咋样",
+				"mood":0,
 				"option1":{
 					"text":"那必须可以",
 					"jump":"1002",
@@ -46,6 +58,7 @@ func test():
 			},
 			"1002" : {
 				"text":"适合我吗",
+				"mood":5,
 				"option1":{
 					"text":"太适合了",
 					"jump":"1002",
@@ -70,6 +83,7 @@ func test():
 			},
 			"1003" : {
 				"text":"太过分了",
+				"mood":10,
 				"option1":null,
 				"option2":null,
 				"option3":null,
@@ -78,6 +92,7 @@ func test():
 			},
 			"1004" : {
 				"text":"喂！你在听我说话吗",
+				"mood":10,
 				"option1":{
 					"text":"在的，亲",
 					"jump":"1001",
@@ -109,6 +124,6 @@ func createCustomer(roleData):
 	print("创建角色："+ roleData.get("roleName"))
 	var customer : Node2D = Customer.instance()
 	layer.add_child(customer)
-	customer.global_position = Vector2(-100,500)
+	customer.global_position = Vector2(-100, 500)
 	customer.setData(roleData)
 	

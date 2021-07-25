@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scences/Option/OptionPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scences/World/World.gd" type="Script" id=2]
 [ext_resource path="res://Scences/Dialogue/DialoguePanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scences/Settlement/Settlement.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scences/World/NumberManager.gd" type="Script" id=5]
 
 [sub_resource type="SegmentShape2D" id=1]
-b = Vector2( 1500, 0 )
+b = Vector2( 1700, 0 )
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CollisionShape2D
@@ -29,11 +31,11 @@ func _ready():
 [node name="World" type="YSort"]
 script = ExtResource( 2 )
 
+[node name="NumberManager" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
 [node name="Floor" type="Node2D" parent="."]
-position = Vector2( -215.029, 533.954 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( -215.029, 600 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
 
@@ -48,6 +50,7 @@ layer = 2
 layer = 4
 
 [node name="OptionPanel" parent="UILayer" instance=ExtResource( 1 )]
+visible = false
 margin_left = 123.16
 margin_top = 366.603
 margin_right = -656.84
@@ -56,3 +59,5 @@ margin_bottom = -53.3972
 [node name="DialoguePanel" parent="UILayer" instance=ExtResource( 3 )]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
+
+[node name="SettlementPanel" parent="UILayer" instance=ExtResource( 4 )]
