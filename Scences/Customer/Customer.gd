@@ -11,3 +11,4 @@ func setData(data):
 	moveController.roleData = data
 	dialogueContronller.roleData = data
 	
+	

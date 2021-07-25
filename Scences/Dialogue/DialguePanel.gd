@@ -26,5 +26,6 @@ func hideAnimationFinished():
 func showAnimationFinished():
 	optionPanel.showOptions(optionData)
 	
+# data {jump,mood}
 func makeChoose(selectOptionData):
 	animationPlayer.play("DialogueHide")

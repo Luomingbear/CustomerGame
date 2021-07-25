@@ -24,6 +24,7 @@ brew install --cask godot
         "dialogMap": {
             "1001": {
                 "text": "你这个东西质量咋样",
+                "mood": 0,
                 "option1": {
                     "text": "那必须可以",
                     "jump": "1002",

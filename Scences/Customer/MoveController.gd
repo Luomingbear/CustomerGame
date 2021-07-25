@@ -5,19 +5,34 @@ extends Node2D
 
 signal need_speak_signal(roleName)
 
-var force = 500
-var speed = 20 # 移动速度的比例
+var force = 100
+var speed = 5 # 移动速度的比例
 var isSpeaking = false # 是否正在说话
+var needMoveOut = false # 需要离开场景
+
 # 角色及对话数据信息
 var roleData = {
 	roleName = "hh"
 }
 onready var parent : KinematicBody2D = get_parent()
+onready var rayCast = $RayCast2D
 
+func _ready():
+	var settlePanel = get_tree().current_scene.find_node("SettlementPanel")
+	settlePanel.connect("need_move_out",self,"moveOut")
 
 func move(delta):
-	parent.move_and_slide(Vector2(speed*force*delta,0))
+	var space_state = rayCast.get_world_2d().direct_space_state
+	if rayCast.is_colliding() and not needMoveOut: # 不要挤到一起了
+		return
+	parent.move_and_slide(Vector2(speed*force,0))
 	isSpeaking = false
+	
+func moveOut(roleName):
+	if roleName != roleData["roleName"]:
+		return
+	print("滚出去")
+	needMoveOut = true
 
 # 判断是否需要对话，如果需要对话，则发送需要对话的信号，对话组件内会接收这个信息进行处理
 func speak():
@@ -34,10 +49,12 @@ func _physics_process(delta):
 	var bodyX = parent.get_global_transform().origin.x #角色的位置
 	if bodyX < centerX :
 		move(delta)
-	elif bodyX < centerX + 100:
+	elif bodyX < centerX + 100 and not needMoveOut:
 		speak()
+	elif bodyX < centerX * 2.5:
+		move(delta)
 	else:
-		isSpeaking = false
+		parent.queue_free()
 
 
 
