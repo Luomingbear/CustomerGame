@@ -58,6 +58,5 @@ margin_bottom = -53.3972
 
 [node name="DialoguePanel" parent="UILayer" instance=ExtResource( 3 )]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="SettlementPanel" parent="UILayer" instance=ExtResource( 4 )]

@@ -36,7 +36,7 @@ var selectOption = null
 #			}
 #]
 
-func showOption(option : CanvasItem, data):
+func showOptionItem(option : CanvasItem, data):
 	if data == null:
 		option.visible = false
 	else:
@@ -48,10 +48,10 @@ func showOptions(options):
 	if visible == true:
 		return
 	print("显示选项")
-	showOption(option1,options.get("option1"))
-	showOption(option2,options.get("option2"))
-	showOption(option3,options.get("option3"))
-	showOption(option4,options.get("option4"))
+	showOptionItem(option1,options.get("option1"))
+	showOptionItem(option2,options.get("option2"))
+	showOptionItem(option3,options.get("option3"))
+	showOptionItem(option4,options.get("option4"))
 	animatonPlayer.play("OptionsShow")
 	visible = true
 		
