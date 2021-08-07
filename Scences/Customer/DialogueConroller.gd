@@ -68,6 +68,7 @@ func hasNoDialogue():
 	}
 	settlementPanel.showSettlement(data)
 	
+# 显示退货的对话
 func showReturnGoodsDialogue():
 	roleData["isNeedReturnGoods"] = false
 	var dialogueData = {
@@ -82,6 +83,11 @@ func showReturnGoodsDialogue():
 				"text": "拒绝退货",
 				"jump": NOT_RETURN_GOODS,
 				"mood": 10
+				},
+			"optionNo":{
+					"text":"同意退货",
+					"jump": RETURN_GOODS,
+					"mood": -10
 				}
 		}
 	showDialogue(dialogueData)

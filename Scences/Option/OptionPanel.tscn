@@ -100,7 +100,7 @@ margin_bottom = 0.0
 anims/OptionsHide = SubResource( 1 )
 anims/OptionsShow = SubResource( 2 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="TimeText" type="RichTextLabel" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -110,6 +110,7 @@ margin_top = -15.0
 margin_right = 25.0
 margin_bottom = 15.0
 theme = SubResource( 3 )
+custom_colors/default_color = Color( 0.85098, 0.172549, 0.172549, 1 )
 tab_size = 6
 text = "10s"
 scroll_active = false
