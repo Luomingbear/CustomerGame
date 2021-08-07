@@ -45,6 +45,8 @@ func showOption(option : CanvasItem, data):
 
 # 显示选项
 func showOptions(options):
+	if visible == true:
+		return
 	print("显示选项")
 	showOption(option1,options.get("option1"))
 	showOption(option2,options.get("option2"))
@@ -66,6 +68,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func makeChoose(optionData):
 	selectOption = optionData
 	animatonPlayer.play("OptionsHide")
+	visible = false
 	
 
 func _on_Option1_make_choose_item(optionItemData):

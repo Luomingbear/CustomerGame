@@ -3,7 +3,7 @@
 [ext_resource path="res://Scences/Option/OptionItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scences/Option/OptionPanel.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "OptionsHide"
 length = 0.3
 tracks/0/type = "value"
@@ -19,8 +19,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "OptionsShow"
+[sub_resource type="Animation" id=2]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -94,8 +93,8 @@ margin_right = 100.0
 margin_bottom = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/OptionsHide = SubResource( 2 )
-anims/OptionsShow = SubResource( 1 )
+anims/OptionsHide = SubResource( 1 )
+anims/OptionsShow = SubResource( 2 )
 
 [connection signal="make_choose_item" from="Option1" to="." method="_on_Option1_make_choose_item"]
 [connection signal="make_choose_item" from="Option2" to="." method="_on_Option2_make_choose_item"]
