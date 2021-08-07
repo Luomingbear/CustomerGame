@@ -36,6 +36,10 @@ var selectOption = null
 #			}
 #]
 
+func _ready():
+	# 默认不可见
+	modulate = 0
+
 func showOptionItem(option : CanvasItem, data):
 	if data == null:
 		option.visible = false

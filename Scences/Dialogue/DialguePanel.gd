@@ -10,6 +10,7 @@ var isTyping = false # 是否正在执行打字机效果
 
 func _ready():
 	optionPanel.connect("make_choose",self,"makeChoose")
+	modulate = 0
 	
 
 # 设置文本内容

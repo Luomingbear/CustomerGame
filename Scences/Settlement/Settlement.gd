@@ -14,6 +14,9 @@ onready var numberManger = get_tree().current_scene.find_node("NumberManager")
 onready var coinText = $Control/HBoxContainer/CoinText
 onready var evaluateTexture = $Control/EvaluateTexture
 
+func _ready():
+	modulate = 0
+
 # 显示结算弹窗,被DialogueController调用
 # data:{ customerMood, playerMood, hasReturnGood,roleName }
 func showSettlement(data):

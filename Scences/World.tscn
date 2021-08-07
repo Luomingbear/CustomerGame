@@ -60,3 +60,4 @@ margin_bottom = -53.3972
 visible = false
 
 [node name="SettlementPanel" parent="UILayer" instance=ExtResource( 4 )]
+visible = false

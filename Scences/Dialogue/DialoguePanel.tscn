@@ -64,9 +64,8 @@ tracks/1/keys = {
 }
 
 [node name="DialoguePanel" type="PanelContainer"]
-modulate = Color( 1, 1, 1, 0 )
 light_mask = 16
-margin_right = 200.0
+margin_right = 220.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 200, 40 )
 script = ExtResource( 1 )
@@ -77,8 +76,8 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 193.0
-margin_bottom = 49.0
+margin_right = 213.0
+margin_bottom = 33.0
 custom_fonts/normal_font = ExtResource( 2 )
 tab_size = 20
 text = "请把我的哥哥还给我！"
