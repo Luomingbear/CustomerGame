@@ -17,7 +17,10 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 193.0
-margin_bottom = 29.0
+margin_bottom = 33.0
 theme = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
