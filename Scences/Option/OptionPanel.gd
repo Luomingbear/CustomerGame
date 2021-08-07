@@ -12,8 +12,8 @@ onready var timeText = $TimeText
 onready var animatonPlayer = $AnimationPlayer
 
 var selectOption = null
-const DEAFULT_WAIT_TIME = 10 # 选项等待时间，超过这个时间会强制选择【未选择】选项
-var time = DEAFULT_WAIT_TIME
+const DEFAULT_WAIT_TIME = 10 # 选项等待时间，超过这个时间会强制选择【未选择】选项
+var time = DEFAULT_WAIT_TIME
 var isNeedShowTime = true # 是否需要显示倒计时，退货不显示倒计时？
 #[
 #	{
@@ -71,9 +71,7 @@ func _process(delta):
 		time -= delta
 		if time <= 0: #选择超时了，强制选择【未选择选项】
 			makeChoose(selectOption)
-			time = DEAFULT_WAIT_TIME
-		
-	
+			
 
 # 动画结束的回调
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -85,6 +83,7 @@ func makeChoose(optionData):
 	selectOption = optionData
 	animatonPlayer.play("OptionsHide")
 	visible = false
+	time = DEFAULT_WAIT_TIME
 	
 
 func _on_Option1_make_choose_item(optionItemData):
