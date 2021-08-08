@@ -2,6 +2,8 @@
 
 extends Control
 
+class_name  OptionPanel
+
 signal make_choose(optionData)
 
 onready var option1 : CanvasItem = $Option1
@@ -10,60 +12,41 @@ onready var option3 : CanvasItem = $Option3
 onready var option4 : CanvasItem = $Option4
 onready var timeText = $TimeText
 onready var animatonPlayer = $AnimationPlayer
+onready var timer = $Timer
 
-var selectOption = null
+var selectOption: OptionData = null
 const DEFAULT_WAIT_TIME = 10 # 选项等待时间，超过这个时间会强制选择【未选择】选项
 var time = DEFAULT_WAIT_TIME
 var isNeedShowTime = true # 是否需要显示倒计时，退货不显示倒计时？
-#[
-#	{
-#"1004" : {
-#				"text":"喂！你在听我说话吗",
-#				"option1":{
-#					"text":"在的，亲",
-#					"jump":"1001",
-#					"mood":1
-#				},
-#				"option2":{
-#					"text":"不在滚",
-#					"jump":"1003",
-#					"mood":2
-#				},
-#				"option3":null,
-#				"option4":null,
-#				"optionNo":{
-#					"text":"",
-#					"jump":"1003",
-#					"mood":10
-#				}
-#			}
-#			}
-#]
 
 func _ready():
 	# 默认不可见
 	modulate = 0
 
-func showOptionItem(option : CanvasItem, data):
-	if data == null:
+func showOptionItem(option: CanvasItem, data: OptionData):
+	if data == null or data.text == null or data.text.length() == 0:
 		option.visible = false
 	else:
 		option.visible = true
 		option.setOptionData(data)
 
 # 显示选项
-func showOptions(options):
-	if visible == true:
+func showOptions(options: DialogueData):
+	if visible == true or options == null:
 		return
 	print("显示选项")
-	showOptionItem(option1,options.get("option1"))
-	showOptionItem(option2,options.get("option2"))
-	showOptionItem(option3,options.get("option3"))
-	showOptionItem(option4,options.get("option4"))
-	selectOption = options.get("optionNo") #默认选择[未选择]选项
+	showOptionItem(option1, options.option1)
+	showOptionItem(option2, options.option2)
+	showOptionItem(option3, options.option3)
+	showOptionItem(option4, options.option4)
+	selectOption = options.optionNo #默认选择[未选择]选项
 	animatonPlayer.play("OptionsShow")
 	visible = true
-		
+	
+func chooseNoOption():
+	if !option1.visible and !option2.visible and !option3.visible and !option4.visible:
+		makeChoose(selectOption)
+	
 		
 func _process(delta):
 	if visible == true and isNeedShowTime:
@@ -79,7 +62,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		emit_signal("make_choose", selectOption)
 
 
-func makeChoose(optionData):
+func makeChoose(optionData: OptionData):
 	selectOption = optionData
 	animatonPlayer.play("OptionsHide")
 	visible = false

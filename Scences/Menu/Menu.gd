@@ -13,13 +13,15 @@ func updateNumbear(updateNumber: NumberData):
 	print("update number, coin:"+str(numberData.coin)+", mood:"+str(numberData.mood))
 	numberData.mood += updateNumber.mood
 	numberData.coin += updateNumber.coin
-	
+
 
 func checkCoin(coin: int):
-	pass
+	if coin < 0 :
+		print("游戏结束：破产了")
 	
 func checkMood(mood: int):
-	pass
+	if mood> 100 :
+		print("游戏结束：气疯了")
 	
 
 func _process(delta):

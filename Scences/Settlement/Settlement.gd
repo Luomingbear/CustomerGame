@@ -20,14 +20,14 @@ func _ready():
 
 # 显示结算弹窗,被DialogueController调用
 # data:{ customerMood, playerMood, hasReturnGood,roleName }
-func showSettlement(data):
-	roleName = data["roleName"]
-	numberData.mood = data["customerMood"]
-	var isGood = showEvaluate(data["customerMood"])
-	showCoin(data["hasReturnGood"],isGood)
+func showSettlement(data: SettlementData):
+	roleName = data.roleName
+	numberData.mood = data.customerMood
+	var isGood = showEvaluate(data.customerMood)
+	showCoin(data.hasReturnGood, isGood)
 	animationPlayer.play("SettlementShow")
 
-func showEvaluate(customerMood):
+func showEvaluate(customerMood: int):
 	print("显示评价动画")
 	var texture = ImageTexture.new()
 	var image = Image.new()
@@ -49,7 +49,7 @@ func onSettlementShowAnimationFinished():
 	
 	
 # 显示结算金币
-func showCoin(isReturn,isGood):
+func showCoin(isReturn: bool, isGood: bool):
 	#结算收入 = （符号）* 基本收入 + 评价收入
 	var evaluateCoin = 5
 	if not isGood:

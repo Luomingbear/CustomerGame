@@ -2,10 +2,7 @@ extends Node
 
 class_name FileManager
 
-func _ready():
-	parse_csv_file("res://test.csv")
-
-func parse_csv_file(path: String) -> Dictionary:
+func parseCsvFile(path: String) -> Dictionary:
 	var file = File.new()
 	file.open(path, File.READ)
 	
@@ -58,7 +55,7 @@ func parse_csv_file(path: String) -> Dictionary:
 		else:
 			var role = RoleData.new()
 			role.roleName = roleId
-			role.isNeedReturnGoods = temp[keys.find("IsReturnGoods")]
+			role.isNeedReturnGoods = temp[keys.find("IsReturnGoods")].to_lower() == "true"
 			role.dialogueIndex = temp[keys.find("TextId")]
 			role.level = temp[keys.find("Level")]
 			

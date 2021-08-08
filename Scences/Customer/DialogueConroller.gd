@@ -5,7 +5,7 @@ extends Node2D
 var RETURN_GOODS = "RETURN_GOODS" #同意退货
 var NOT_RETURN_GOODS = "NOT_RETURN_GOODS" #不同意退货
 
-var roleData={}
+var roleData: RoleData = null
 var isShowDialogue = false
 var hasReturnGood = false
 var customerMood = 0
@@ -25,7 +25,7 @@ func _ready():
 
 
 # 显示对话气泡
-func showDialogue(dialogue = null):
+func showDialogue(dialogue: DialogueData = null):
 	isShowDialogue = true
 	# 优先使用函数传进来的对话信息
 	var dialogueItem = dialogue
@@ -35,9 +35,9 @@ func showDialogue(dialogue = null):
 	if dialogueItem == null :
 		hasNoDialogue()
 		return
-	if dialogueItem["option1"] == null and dialogueItem["option2"] == null \
-	and dialogueItem["option3"] == null and dialogueItem["option4"] == null \
-	and dialogueItem["optionNo"] == null:
+	if dialogueItem.option1 == null and dialogueItem.option2 == null \
+	and dialogueItem.option3 == null and dialogueItem.option4 == null \
+	and dialogueItem.optionNo == null:
 		hasNoDialogue()
 		return
 	# 设置气泡的位置
@@ -46,56 +46,47 @@ func showDialogue(dialogue = null):
 	dialoguePanel.set_global_position(p)
 	dialoguePanel.setText(dialogueItem)
 	# 更新玩家愤怒值
-	playerMood += (dialogueItem["mood"] as int)
+	playerMood += (dialogueItem.mood as int)
 	
 	
-func getDialogueItem():
-	var dialogueMap = roleData.get("dialogMap")
+func getDialogueItem()-> DialogueData:
+	var dialogueMap = roleData.dialogMap
 	if dialogueMap == null:
-		return
-	return dialogueMap.get(roleData.get("dialogueIndex"))
+		return null
+	return dialogueMap.get(roleData.dialogueIndex)
 	
 func hasNoDialogue():
-	print("对话结束:"+roleData["roleName"]+ ",是否需要退货："+ str(roleData["isNeedReturnGoods"]))
-	if roleData["isNeedReturnGoods"] == true:
+	print("对话结束:"+roleData.roleName+ ",是否需要退货："+ str(roleData.isNeedReturnGoods))
+	if roleData.isNeedReturnGoods == true:
 		showReturnGoodsDialogue()
 		return
-	var data = {
-		"customerMood": customerMood,
-		"playerMood": playerMood,
-		"hasReturnGood": hasReturnGood,
-		"roleName": roleData["roleName"]
-	}
+	var data = SettlementData.new()
+	data.customerMood = customerMood
+	data.playerMood = playerMood
+	data.hasReturnGood = hasReturnGood
+	data.roleName = roleData.roleName
 	settlementPanel.showSettlement(data)
 	
 # 显示退货的对话
 func showReturnGoodsDialogue():
-	roleData["isNeedReturnGoods"] = false
-	var dialogueData = {
-			"text": "我要求退货！",
-			"mood": 0,
-			"option1": {
-				"text": "同意退货",
-				"jump": RETURN_GOODS,
-				"mood": -10
-				},
-			"option2": {
-				"text": "拒绝退货",
-				"jump": NOT_RETURN_GOODS,
-				"mood": 10
-				},
-			"optionNo":{
-					"text":"拒绝退货",
-					"jump": NOT_RETURN_GOODS,
-					"mood": 10
-				}
-		}
+	roleData.isNeedReturnGoods = false
+	var dialogueData = DialogueData.new()
+	dialogueData.text = "我要求退货！"
+	dialogueData.mood = 0
+	dialogueData.option1 = OptionData.new()
+	dialogueData.option1.text = "同意退货"
+	dialogueData.option1.jump = RETURN_GOODS
+	dialogueData.option1.mood = -10
+	dialogueData.option2.text = "拒绝退货"
+	dialogueData.option2.jump = NOT_RETURN_GOODS
+	dialogueData.option2.mood = 10
+	dialogueData.optionNo = dialogueData.option2
 	showDialogue(dialogueData)
 
 # 接收到需要对话的指令
 func _on_MoveController_need_speak_signal(roleName):
 	# 如果roleName和自己是相同的，就显示对话框，否则忽略
-	if roleData.get("roleName") != roleName:
+	if roleData.roleName != roleName:
 		return
 	if not isShowDialogue:
 		showDialogue()
@@ -104,8 +95,8 @@ func makeChoose(selectOption):
 	if not isShowDialogue:
 		return
 	isShowDialogue = false
-	customerMood += (selectOption["mood"] as int) # 更新客户的愤怒值
-	roleData["dialogueIndex"] = selectOption["jump"]
-	if selectOption["jump"] == RETURN_GOODS:
+	customerMood += (selectOption.mood as int) # 更新客户的愤怒值
+	roleData.dialogueIndex = selectOption.jump
+	if selectOption.jump == RETURN_GOODS:
 		hasReturnGood = true
 	showDialogue()

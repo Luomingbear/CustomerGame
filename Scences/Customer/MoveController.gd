@@ -11,15 +11,13 @@ var isSpeaking = false # 是否正在说话
 var needMoveOut = false # 需要离开场景
 
 # 角色及对话数据信息
-var roleData = {
-	roleName = "hh"
-}
+var roleData : RoleData
 onready var parent : KinematicBody2D = get_parent()
 onready var rayCast = $RayCast2D
 
 func _ready():
 	var settlePanel = get_tree().current_scene.find_node("SettlementPanel")
-	settlePanel.connect("need_move_out",self,"moveOut")
+	settlePanel.connect("need_move_out", self, "moveOut")
 
 func move(delta):
 	var space_state = rayCast.get_world_2d().direct_space_state
@@ -29,7 +27,7 @@ func move(delta):
 	isSpeaking = false
 	
 func moveOut(roleName):
-	if roleName != roleData["roleName"]:
+	if roleName != roleData.roleName:
 		return
 	print("滚出去")
 	needMoveOut = true
@@ -39,7 +37,7 @@ func speak():
 	if isSpeaking:
 		return
 	isSpeaking = true
-	emit_signal("need_speak_signal",roleData.get("roleName"))
+	emit_signal("need_speak_signal", roleData.roleName)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
