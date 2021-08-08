@@ -2,7 +2,7 @@ extends Node
 
 class_name FileManager
 
-func parseCsvFile(path: String) -> Dictionary:
+static func parseCsvFile(path: String) -> Dictionary:
 	var file = File.new()
 	file.open(path, File.READ)
 	
