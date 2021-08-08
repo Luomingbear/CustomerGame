@@ -1,10 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scences/Option/OptionPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scences/World/World.gd" type="Script" id=2]
 [ext_resource path="res://Scences/Dialogue/DialoguePanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scences/Settlement/Settlement.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scences/World/NumberManager.gd" type="Script" id=5]
+[ext_resource path="res://Scences/Menu/Menu.tscn" type="PackedScene" id=5]
+
+[sub_resource type="GDScript" id=3]
+script/source = "# 数值管理器
+
+extends Node2D
+
+var moodNum = 0 # 心情值
+var coinNum = 0 # 金币值
+"
 
 [sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 1700, 0 )
@@ -32,7 +41,7 @@ func _ready():
 script = ExtResource( 2 )
 
 [node name="NumberManager" type="Node2D" parent="."]
-script = ExtResource( 5 )
+script = SubResource( 3 )
 
 [node name="Floor" type="Node2D" parent="."]
 position = Vector2( -215.029, 600 )
@@ -61,3 +70,11 @@ visible = false
 
 [node name="SettlementPanel" parent="UILayer" instance=ExtResource( 4 )]
 visible = false
+
+[node name="MenuPanel" parent="UILayer" instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -200.0
+margin_right = 0.0

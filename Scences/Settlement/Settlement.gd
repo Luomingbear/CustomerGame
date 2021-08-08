@@ -8,11 +8,12 @@ var EVALUATE_NUM = 10 # 超过这个值就是差评
 var BASE_COIN = 10 # 一局可以获得金币的基础值
 
 var roleName = ""
+var numberData: NumberData = NumberData.new()
 
 onready var animationPlayer = $Control/AnimationPlayer
-onready var numberManger = get_tree().current_scene.find_node("NumberManager")
 onready var coinText = $Control/HBoxContainer/CoinText
 onready var evaluateTexture = $Control/EvaluateTexture
+onready var menuManager :MenuPanel = get_tree().current_scene.find_node("MenuPanel") as MenuPanel
 
 func _ready():
 	modulate = 0
@@ -21,6 +22,7 @@ func _ready():
 # data:{ customerMood, playerMood, hasReturnGood,roleName }
 func showSettlement(data):
 	roleName = data["roleName"]
+	numberData.mood = data["customerMood"]
 	var isGood = showEvaluate(data["customerMood"])
 	showCoin(data["hasReturnGood"],isGood)
 	animationPlayer.play("SettlementShow")
@@ -58,7 +60,7 @@ func showCoin(isReturn,isGood):
 	var baseCoin = BASE_COIN * symbol
 	var coin = baseCoin + evaluateCoin
 	coinText.bbcode_text = str(coin) +"="+ str(baseCoin) +"+"+str(evaluateCoin)
-
+	numberData.coin = coin
 
 # 点击了确定按钮，需要隐藏弹窗
 func _on_OKBtn_button_down():
@@ -66,3 +68,5 @@ func _on_OKBtn_button_down():
 	evaluateTexture.modulate = 0
 	# 发送信号，通知客户需要离开场景了
 	emit_signal("need_move_out", roleName)
+	# 更新金币、心情值的变化
+	menuManager.updateNumbear(numberData)

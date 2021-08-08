@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "MenuPanel",
+"language": "GDScript",
+"path": "res://Scences/Menu/Menu.gd"
+}, {
+"base": "Object",
+"class": "NumberData",
+"language": "GDScript",
+"path": "res://Scences/Menu/NumberData.gd"
+} ]
+_global_script_class_icons={
+"MenuPanel": "",
+"NumberData": ""
+}
+
 [application]
 
 config/name="CustomerServices"
