@@ -38,7 +38,7 @@ func typewriter():
 
 var time = 0
 func _process(delta):
-	if isTyping:
+	if isTyping and optionData != null :
 		time += delta
 		if optionData.text != null && time > 0.1: 
 			time = 0
@@ -52,7 +52,7 @@ func _process(delta):
 				timer.start(DEFAULT_OPTION_SHOW_TIME)
 	
 func _input(event):
-	if event.is_pressed():
+	if event.is_pressed() and optionData != null:
 		if optionData.text != null:
 			if textLabel.visible_characters >= optionData.text.length():
 				optionPanel.chooseNoOption()
