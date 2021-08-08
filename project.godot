@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Object",
+"class": "DialogueData",
+"language": "GDScript",
+"path": "res://Meta/DialogueData.gd"
+}, {
+"base": "Object",
+"class": "OptionData",
+"language": "GDScript",
+"path": "res://Meta/OptionData.gd"
+}, {
+"base": "Object",
+"class": "RoleData",
+"language": "GDScript",
+"path": "res://Meta/RoleData.gd"
+} ]
+_global_script_class_icons={
+"DialogueData": "",
+"OptionData": "",
+"RoleData": ""
+}
+
 [application]
 
 config/name="CustomerServices"

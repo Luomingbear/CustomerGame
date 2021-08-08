@@ -72,7 +72,7 @@ func hasNoDialogue():
 func showReturnGoodsDialogue():
 	roleData["isNeedReturnGoods"] = false
 	var dialogueData = {
-		    "text": "我要求退货！",
+			"text": "我要求退货！",
 			"mood": 0,
 			"option1": {
 				"text": "同意退货",
