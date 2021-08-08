@@ -4,8 +4,8 @@
 [ext_resource path="res://Scences/Option/OptionItem.gd" type="Script" id=2]
 
 [node name="OptionItem" type="PanelContainer"]
-margin_right = 200.0
-margin_bottom = 31.0
+margin_right = 250.0
+margin_bottom = 35.0
 rect_min_size = Vector2( 0, 30 )
 size_flags_vertical = 3
 script = ExtResource( 2 )
@@ -13,15 +13,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="RichTextLabel" parent="."]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 193.0
-margin_bottom = 33.0
+margin_right = 243.0
+margin_bottom = 28.0
+size_flags_vertical = 3
 theme = ExtResource( 1 )
 text = "休闲鞋"
+fit_content_height = true
+scroll_active = false
 __meta__ = {
 "_editor_description_": ""
 }
-
-[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]

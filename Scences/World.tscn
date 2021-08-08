@@ -50,8 +50,8 @@ layer = 4
 visible = false
 margin_left = 123.16
 margin_top = 366.603
-margin_right = -656.84
-margin_bottom = -53.3972
+margin_right = -556.84
+margin_bottom = -53.3973
 
 [node name="DialoguePanel" parent="UILayer" instance=ExtResource( 3 )]
 visible = false

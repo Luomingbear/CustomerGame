@@ -12,6 +12,10 @@ func setOptionData(data: OptionData):
 	optionItemData = data
 	button.text = data.get("text")
 	
+	
+func _input(event):
+	if event.is_pressed():
+		_on_Button_button_down()
 
 # 按钮点击
 func _on_Button_button_down():

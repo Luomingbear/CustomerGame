@@ -40,8 +40,9 @@ func showOptions(options: DialogueData):
 	showOptionItem(option3, options.option3)
 	showOptionItem(option4, options.option4)
 	selectOption = options.optionNo #默认选择[未选择]选项
-	animatonPlayer.play("OptionsShow")
-	visible = true
+	if options.needShowOptions():
+		animatonPlayer.play("OptionsShow")
+		visible = true
 	
 func chooseNoOption():
 	if !option1.visible and !option2.visible and !option3.visible and !option4.visible:
