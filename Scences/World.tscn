@@ -6,10 +6,10 @@
 [ext_resource path="res://Scences/Settlement/Settlement.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scences/Menu/Menu.tscn" type="PackedScene" id=5]
 
-[sub_resource type="SegmentShape2D" id=2]
+[sub_resource type="SegmentShape2D" id=1]
 b = Vector2( 1700, 0 )
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 script/source = "extends CollisionShape2D
 
 
@@ -37,8 +37,8 @@ position = Vector2( -215.029, 600 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
-shape = SubResource( 2 )
-script = SubResource( 3 )
+shape = SubResource( 1 )
+script = SubResource( 2 )
 
 [node name="CustomerLayer" type="CanvasLayer" parent="."]
 layer = 2
