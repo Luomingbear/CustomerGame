@@ -32,7 +32,7 @@ func showDialogue(dialogue: DialogueData = null):
 	if dialogue == null:
 		dialogueItem = getDialogueItem()
 	#没有找到对话信息
-	if dialogueItem == null :
+	if dialogueItem == null or !dialogueItem.needShowOptions():
 		hasNoDialogue()
 		return
 	if dialogueItem.option1 == null and dialogueItem.option2 == null \

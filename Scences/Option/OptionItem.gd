@@ -15,6 +15,7 @@ func setOptionData(data: OptionData):
 	
 func _input(event):
 	if event.is_pressed():
+		fit_child_in_rect(button,Rect2(0,0,250,50))
 		_on_Button_button_down()
 
 # 按钮点击

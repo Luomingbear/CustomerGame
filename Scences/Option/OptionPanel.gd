@@ -15,7 +15,7 @@ onready var animatonPlayer = $AnimationPlayer
 onready var timer = $Timer
 
 var selectOption: OptionData = null
-const DEFAULT_WAIT_TIME = 10 # 选项等待时间，超过这个时间会强制选择【未选择】选项
+const DEFAULT_WAIT_TIME = 20 # 选项等待时间，超过这个时间会强制选择【未选择】选项
 var time = DEFAULT_WAIT_TIME
 var isNeedShowTime = true # 是否需要显示倒计时，退货不显示倒计时？
 
