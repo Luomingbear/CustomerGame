@@ -24,7 +24,7 @@ func showSettlement(data: SettlementData):
 	roleName = data.roleName
 	numberData.mood = data.customerMood
 	var isGood = showEvaluate(data.customerMood)
-	showCoin(data.hasReturnGood, isGood)
+	showCoin(data, isGood)
 	animationPlayer.play("SettlementShow")
 
 func showEvaluate(customerMood: int):
@@ -49,17 +49,18 @@ func onSettlementShowAnimationFinished():
 	
 	
 # 显示结算金币
-func showCoin(isReturn: bool, isGood: bool):
+func showCoin(settlementData: SettlementData, isGood: bool):
 	#结算收入 = （符号）* 基本收入 + 评价收入
 	var evaluateCoin = 5
 	if not isGood:
 		evaluateCoin = -5
 	var symbol = 1
-	if isReturn == true:
+	if settlementData.hasReturnGood == true:
 		symbol = -1
 	var baseCoin = BASE_COIN * symbol
-	var coin = baseCoin + evaluateCoin
-	coinText.bbcode_text = str(coin) +"="+ str(baseCoin) +"+"+str(evaluateCoin)
+	var otherCoin = settlementData.coin
+	var coin = baseCoin + evaluateCoin + otherCoin
+	coinText.bbcode_text = str(coin) +"="+ str(baseCoin) +"+"+str(evaluateCoin) + "+" + str(otherCoin)
 	numberData.coin = coin
 
 # 点击了确定按钮，需要隐藏弹窗

@@ -6,11 +6,8 @@ var RETURN_GOODS = "RETURN_GOODS" #同意退货
 var NOT_RETURN_GOODS = "NOT_RETURN_GOODS" #不同意退货
 
 var roleData: RoleData = null
+var settlementData: SettlementData = SettlementData.new()
 var isShowDialogue = false
-var hasReturnGood = false
-var customerMood = 0
-var playerMood = 0
-
 
 onready var parent : Node2D = get_parent()
 onready var dialoguePanel = get_tree().current_scene.find_node("DialoguePanel")
@@ -27,12 +24,16 @@ func _ready():
 # 显示对话气泡
 func showDialogue(dialogue: DialogueData = null):
 	isShowDialogue = true
+	settlementData.roleName = roleData.roleName
+	settlementData.customerMood = 0
+	settlementData.playerMood = 0
 	# 优先使用函数传进来的对话信息
 	var dialogueItem = dialogue
 	if dialogue == null:
 		dialogueItem = getDialogueItem()
 	#没有找到对话信息
-	if dialogueItem == null or !dialogueItem.needShowOptions():
+	if dialogueItem == null or \
+		(!dialogueItem.needShowOptions() and !dialogueItem.hasOptionNo()):
 		hasNoDialogue()
 		return
 	if dialogueItem.option1 == null and dialogueItem.option2 == null \
@@ -46,7 +47,7 @@ func showDialogue(dialogue: DialogueData = null):
 	dialoguePanel.set_global_position(p)
 	dialoguePanel.setText(dialogueItem)
 	# 更新玩家愤怒值
-	playerMood += (dialogueItem.mood as int)
+	settlementData.playerMood += (dialogueItem.mood as int)
 	
 	
 func getDialogueItem()-> DialogueData:
@@ -60,12 +61,8 @@ func hasNoDialogue():
 	if roleData.isNeedReturnGoods == true:
 		showReturnGoodsDialogue()
 		return
-	var data = SettlementData.new()
-	data.customerMood = customerMood
-	data.playerMood = playerMood
-	data.hasReturnGood = hasReturnGood
-	data.roleName = roleData.roleName
-	settlementPanel.showSettlement(data)
+	settlementPanel.showSettlement(settlementData)
+	settlementData = SettlementData.new()
 	
 # 显示退货的对话
 func showReturnGoodsDialogue():
@@ -91,12 +88,13 @@ func _on_MoveController_need_speak_signal(roleName):
 	if not isShowDialogue:
 		showDialogue()
 
-func makeChoose(selectOption):
+func makeChoose(selectOption: OptionData):
 	if not isShowDialogue:
 		return
 	isShowDialogue = false
-	customerMood += (selectOption.mood as int) # 更新客户的愤怒值
+	settlementData.customerMood += (selectOption.mood as int) # 更新客户的愤怒值
 	roleData.dialogueIndex = selectOption.jump
 	if selectOption.jump == RETURN_GOODS:
-		hasReturnGood = true
+		settlementData.hasReturnGood = true
+	settlementData.coin += selectOption.money
 	showDialogue()

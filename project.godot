@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Meta/OptionData.gd"
 }, {
+"base": "Control",
+"class": "OptionPanel",
+"language": "GDScript",
+"path": "res://Scences/Option/OptionPanel.gd"
+}, {
 "base": "Object",
 "class": "RoleData",
 "language": "GDScript",
@@ -50,6 +55,7 @@ _global_script_class_icons={
 "MenuPanel": "",
 "NumberData": "",
 "OptionData": "",
+"OptionPanel": "",
 "RoleData": "",
 "SettlementData": ""
 }
@@ -111,3 +117,11 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 environment/default_environment="res://default_env.tres"
+
+[res:]
+
+/Meta/RoleData.gd}]_global_script_class_icons={
+"DialogueData": "",
+"OptionData": "",
+"RoleData": ""
+}

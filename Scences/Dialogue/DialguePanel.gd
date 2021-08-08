@@ -52,10 +52,9 @@ func _process(delta):
 				timer.start(DEFAULT_OPTION_SHOW_TIME)
 	
 func _input(event):
-	if event.is_pressed() and optionData != null:
+	if event.is_pressed() and optionData != null and visible:
+		# 点击鼠标的时候可以跳过打字机效果
 		if optionData.text != null:
-			if textLabel.visible_characters >= optionData.text.length():
-				optionPanel.chooseNoOption()
 			textLabel.visible_characters = optionData.text.length()
 		
 		

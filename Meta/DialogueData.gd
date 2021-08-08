@@ -11,4 +11,7 @@ var option4: OptionData = OptionData.new()
 var optionNo: OptionData = OptionData.new()
 
 func needShowOptions()-> bool:
-	return option1.hasContent() and option2.hasContent() and option3.hasContent() and option4.hasContent()
+	return option1.hasContent() or option2.hasContent() or option3.hasContent() or option4.hasContent()
+
+func hasOptionNo()-> bool:
+	return optionNo != null and !optionNo.jump.empty()
