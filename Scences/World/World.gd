@@ -26,7 +26,7 @@ func test(roleName, difficulty):
 		"roleName" : roleName, #角色名
 		"isNeedReturnGoods" : true, # 是否需要退货
 		"dialogueIndex" : "1001", # 当前正在说的话的tetxId
-        "difficulty" : difficulty, #难度
+		"difficulty" : difficulty, #难度
 		"dialogMap" : {
 			"1001" : {
 				"text":"你这个东西质量咋样",
