@@ -192,13 +192,12 @@ __meta__ = {
 }
 
 [node name="EvaluateTexture" type="TextureRect" parent="Control"]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -61.5865
+margin_left = -61.587
 margin_top = -10.5834
-margin_right = 38.4135
+margin_right = 38.413
 margin_bottom = 89.4166
 rect_rotation = 30.0
 rect_pivot_offset = Vector2( 50, 50 )

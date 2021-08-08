@@ -47,7 +47,7 @@ func _process(delta):
 			optionPanel.showOptions(optionData)
 	
 func _input(event):
-	if event.is_pressed():
+	if event.is_pressed() and optionData.get("text") != null :
 		textLabel.visible_characters = optionData.get("text").length()
 	
 # 显示动画结束

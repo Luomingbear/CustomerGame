@@ -18,10 +18,11 @@ brew install --cask godot
 ```json
 [
     {
-        "roleName": "101",
-        "isNeedReturnGoods": false,
-        "dialogueIndex": "1001",
-        "dialogMap": {
+        "roleName": "101", //角色名
+        "isNeedReturnGoods": false, //是否需要退货
+        "dialogueIndex": "1001", //默认显示的对话id
+        "difficulty":1, //难度
+        "dialogMap": { //对话map
             "1001": {
                 "text": "你这个东西质量咋样",
                 "mood": 0,

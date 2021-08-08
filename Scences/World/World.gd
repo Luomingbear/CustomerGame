@@ -6,26 +6,27 @@ onready var Customer = load("res://Scences/Customer/Customer.tscn")
 onready var layer = $CustomerLayer
 
 var time = 0
-var CREATE_CUSTOMER_DELAY = 10
+var CREATE_CUSTOMER_DELAY = 10 #创建新角色的时间间隔
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	loadDataFromDisk()
-	test("101")
+	test("101", 1)
 	
 func _process(delta):
-	time +=delta
+	time += delta
 	if time > CREATE_CUSTOMER_DELAY:
 		if layer.get_child_count() < 4:
 			time = 0
-			test("102"+str(layer.get_child_count()))
+			test("102"+str(layer.get_child_count()), layer.get_child_count())
 	
 	
-func test(roleName):
+func test(roleName, difficulty):
 	var obj = {
 		"roleName" : roleName, #角色名
 		"isNeedReturnGoods" : true, # 是否需要退货
 		"dialogueIndex" : "1001", # 当前正在说的话的tetxId
+        "difficulty" : difficulty, #难度
 		"dialogMap" : {
 			"1001" : {
 				"text":"你这个东西质量咋样",

@@ -63,5 +63,6 @@ func showCoin(isReturn,isGood):
 # 点击了确定按钮，需要隐藏弹窗
 func _on_OKBtn_button_down():
 	animationPlayer.play("SettlementHide")
+	evaluateTexture.modulate = 0
 	# 发送信号，通知客户需要离开场景了
-	emit_signal("need_move_out",roleName)
+	emit_signal("need_move_out", roleName)
