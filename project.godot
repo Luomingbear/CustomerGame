@@ -19,9 +19,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scences/Menu/NumberData.gd"
 } ]
+"base": "Object",
+"class": "DialogueData",
+"language": "GDScript",
+"path": "res://Meta/DialogueData.gd"
+}, {
+"base": "Object",
+"class": "OptionData",
+"language": "GDScript",
+"path": "res://Meta/OptionData.gd"
+}, {
+"base": "Object",
+"class": "RoleData",
+"language": "GDScript",
+"path": "res://Meta/RoleData.gd"
+} ]
 _global_script_class_icons={
-"MenuPanel": "",
-"NumberData": ""
+"DialogueData": "",
+"OptionData": "",
+"RoleData": ""
 }
 
 [application]
