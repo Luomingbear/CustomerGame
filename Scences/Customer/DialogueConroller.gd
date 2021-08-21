@@ -16,6 +16,8 @@ onready var optionPanel = get_tree().current_scene.find_node("OptionPanel")
 onready var settlementPanel = get_tree().current_scene.find_node("SettlementPanel")
 
 
+#func _ready():
+#	optionPanel.connect("make_choose2",self,"makeChoose")
 
 
 # 显示对话气泡
