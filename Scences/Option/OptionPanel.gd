@@ -12,11 +12,12 @@ onready var timeText = $TimeText
 onready var animatonPlayer = $AnimationPlayer
 onready var timer = $Timer
 onready var hero : Hero = get_tree().current_scene.find_node("Hero") as Hero
+
 onready var customerDialogue = get_tree().current_scene.find_node("DialoguePanel")
 
 
 var selectOption: OptionData = null
-const DEFAULT_WAIT_TIME = 20 # 选项等待时间，超过这个时间会强制选择【未选择】选项
+const DEFAULT_WAIT_TIME = 15 # 选项等待时间，超过这个时间会强制选择【未选择】选项
 var time = DEFAULT_WAIT_TIME
 var isNeedShowTime = true # 是否需要显示倒计时，退货不显示倒计时？
 
@@ -67,7 +68,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func makeChoose(optionData: OptionData):
 	selectOption = optionData
 	animatonPlayer.play("OptionsHide")
-	customerDialogue.makeChoose(optionData)
+	customerDialogue.hideDialogue(optionData)
 	visible = false
 	time = DEFAULT_WAIT_TIME
 	

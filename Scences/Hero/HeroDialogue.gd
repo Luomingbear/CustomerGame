@@ -2,7 +2,6 @@
 # 玩家对话框的逻辑
 extends Node2D
 
-class_name HreoDialogue
 
 onready var textLabel = $PanelContainer/RichTextLabel
 onready var animationPlayer = $AnimationPlayer

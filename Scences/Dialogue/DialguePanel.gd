@@ -1,5 +1,7 @@
 extends PanelContainer
 
+class_name CustomerDialogue
+
 onready var animationPlayer:AnimationPlayer = $AnimationPlayer
 onready var textLabel = $RichTextLabel
 onready var optionPanel : OptionPanel = get_parent().find_node("OptionPanel") as OptionPanel
@@ -11,7 +13,6 @@ var textVisiableLength = 0 #可以看见的文字输量
 var isTyping = false # 是否正在执行打字机效果
 
 func _ready():
-	#optionPanel.connect("hero_make_choose", self, "makeChoose")
 	modulate = 0
 	
 
@@ -64,7 +65,7 @@ func hideAnimationFinished():
 	pass
 	
 
-func makeChoose(selectOptionData):
+func hideDialogue(selectOptionData):
 	animationPlayer.play("DialogueHide")
 	print("客户弹窗隐藏")
 

@@ -11,7 +11,11 @@ onready var dialogue = $HeroDialogue
 
 
 func makeChoose(option: OptionData):
-	dialogue.showDialogue(option)
+	if option == null or option.text.empty():
+		# 这个是超时自动选择
+		afterDialogueHide(option)
+	else:
+	    dialogue.showDialogue(option)
 	
 
 func afterDialogueHide(option: OptionData):
