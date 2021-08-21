@@ -13,6 +13,9 @@ onready var option4 : CanvasItem = $Option4
 onready var timeText = $TimeText
 onready var animatonPlayer = $AnimationPlayer
 onready var timer = $Timer
+onready var hero : Hero = get_tree().current_scene.find_node("Hero") as Hero
+onready var customerDialogue = get_tree().current_scene.find_node("DialoguePanel")
+
 
 var selectOption: OptionData = null
 const DEFAULT_WAIT_TIME = 20 # 选项等待时间，超过这个时间会强制选择【未选择】选项
@@ -60,12 +63,13 @@ func _process(delta):
 # 动画结束的回调
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "OptionsHide":
-		emit_signal("make_choose", selectOption)
+		hero.makeChoose(selectOption)
 
 
 func makeChoose(optionData: OptionData):
 	selectOption = optionData
 	animatonPlayer.play("OptionsHide")
+	customerDialogue.makeChoose(optionData)
 	visible = false
 	time = DEFAULT_WAIT_TIME
 	

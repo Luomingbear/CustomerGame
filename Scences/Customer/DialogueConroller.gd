@@ -17,9 +17,6 @@ onready var settlementPanel = get_tree().current_scene.find_node("SettlementPane
 
 
 
-func _ready():
-	optionPanel.connect("make_choose",self,"makeChoose")
-
 
 # 显示对话气泡
 func showDialogue(dialogue: DialogueData = null):
@@ -71,9 +68,11 @@ func showReturnGoodsDialogue():
 	dialogueData.text = "我要求退货！"
 	dialogueData.mood = 0
 	dialogueData.option1 = OptionData.new()
+	dialogueData.option1.hint = "同意退货"
 	dialogueData.option1.text = "同意退货"
 	dialogueData.option1.jump = RETURN_GOODS
 	dialogueData.option1.mood = -10
+	dialogueData.option2.hint = "拒绝退货"
 	dialogueData.option2.text = "拒绝退货"
 	dialogueData.option2.jump = NOT_RETURN_GOODS
 	dialogueData.option2.mood = 10
@@ -93,8 +92,8 @@ func makeChoose(selectOption: OptionData):
 		return
 	isShowDialogue = false
 	settlementData.customerMood += (selectOption.mood as int) # 更新客户的愤怒值
-	roleData.dialogueIndex = selectOption.jump
+	#roleData.dialogueIndex = selectOption.jump
 	if selectOption.jump == RETURN_GOODS:
 		settlementData.hasReturnGood = true
 	settlementData.coin += selectOption.money
-	showDialogue()
+	#showDialogue()

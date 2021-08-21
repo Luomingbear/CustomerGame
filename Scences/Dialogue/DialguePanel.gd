@@ -25,10 +25,7 @@ func setText(option: DialogueData):
 	textLabel.visible_characters = 0
 	animationPlayer.play("DialogueShow")
 
-# 隐藏动画结束
-func hideAnimationFinished():
-	pass
-	
+
 
 # 打字机
 func typewriter():
@@ -61,10 +58,15 @@ func _input(event):
 # 显示动画结束
 func showAnimationFinished():
 	typewriter()
+
+# 隐藏动画结束
+func hideAnimationFinished():
+	pass
 	
-# data {jump,mood}
+
 func makeChoose(selectOptionData):
 	animationPlayer.play("DialogueHide")
+	print("客户弹窗隐藏")
 
 
 func _on_Timer_timeout():
