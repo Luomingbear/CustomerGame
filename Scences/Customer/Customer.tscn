@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Images/customer_1.png" type="Texture" id=1]
+[ext_resource path="res://Images/c1.png" type="Texture" id=1]
 [ext_resource path="res://Scences/Customer/MoveController.gd" type="Script" id=2]
 [ext_resource path="res://Scences/Customer/DialogueConroller.gd" type="Script" id=3]
 [ext_resource path="res://Scences/Customer/Customer.gd" type="Script" id=4]
@@ -11,6 +11,7 @@ height = 42.9462
 
 [node name="Customer" type="KinematicBody2D"]
 light_mask = 2
+scale = Vector2( 0.1, 0.1 )
 collision_layer = 2
 collision_mask = 3
 script = ExtResource( 4 )
