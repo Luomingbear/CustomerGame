@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Object",
+"class": "ArchiveData",
+"language": "GDScript",
+"path": "res://Meta/ArchiveData.gd"
+}, {
+"base": "Node",
+"class": "ArchiveManager",
+"language": "GDScript",
+"path": "res://ArchiveManager.gd"
+}, {
+"base": "Object",
 "class": "DialogueData",
 "language": "GDScript",
 "path": "res://Meta/DialogueData.gd"
@@ -44,12 +54,19 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Meta/RoleData.gd"
 }, {
+"base": "Node",
+"class": "RoleFactory",
+"language": "GDScript",
+"path": "res://RoleFactory.gd"
+}, {
 "base": "Object",
 "class": "SettlementData",
 "language": "GDScript",
 "path": "res://Scences/Settlement/SettlementData.gd"
 } ]
 _global_script_class_icons={
+"ArchiveData": "",
+"ArchiveManager": "",
 "DialogueData": "",
 "FileManager": "",
 "MenuPanel": "",
@@ -57,6 +74,7 @@ _global_script_class_icons={
 "OptionData": "",
 "OptionPanel": "",
 "RoleData": "",
+"RoleFactory": "",
 "SettlementData": ""
 }
 
