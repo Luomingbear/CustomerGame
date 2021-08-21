@@ -80,3 +80,32 @@ static func parseCsvFile(path: String) -> Dictionary:
 		
 	file.close()
 	return data_list
+
+## 文件是否存在
+## @path 文件路径
+static func exists_file(path: String) -> bool:
+	var file = File.new()
+	var exists = file.file_exists(path)
+	file.close()
+	return exists
+
+
+## 保存数据
+## @path 文件路径
+## @data 数据
+static func save_data(path: String, data) -> void:
+	var file = File.new()
+	file.open(path, File.WRITE)
+	file.store_var(data)
+	file.close()
+
+
+## 加载数据
+## @path 文件路径
+## @return 返回数据
+static func load_data(path: String):
+	var file = File.new()
+	file.open(path, File.READ)
+	var data = file.get_var()
+	file.close()
+	return data

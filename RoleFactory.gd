@@ -17,5 +17,5 @@ static func init():
 			roleDictionary[role.level] = array
 	
 
-static func create() -> RoleData:
+static func next() -> RoleData:
 	return null

@@ -6,7 +6,7 @@ class_name ArchiveData
 var state: NumberData = NumberData.new()
 
 # 当前对话人物
-var currentRole: RoleData = RoleData.new()
+var currentRole: Dictionary = {}
 
 # 当前等级对话过的人物集合
 var roleNameArray: PoolStringArray = []
