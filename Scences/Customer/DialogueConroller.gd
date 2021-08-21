@@ -10,7 +10,7 @@ var settlementData: SettlementData = SettlementData.new()
 var isShowDialogue = false
 
 onready var parent : Node2D = get_parent()
-onready var dialoguePanel = get_tree().current_scene.find_node("DialoguePanel")
+onready var dialoguePanel = $DialoguePanel
 onready var sprite : Sprite = get_node("../Sprite")
 onready var hero = get_tree().current_scene.find_node("Hero")
 onready var settlementPanel = get_tree().current_scene.find_node("SettlementPanel")
@@ -30,21 +30,15 @@ func showDialogue(dialogue: DialogueData = null):
 	var dialogueItem = dialogue
 	if dialogue == null:
 		dialogueItem = getDialogueItem()
-	#没有找到对话信息
-	if dialogueItem == null or \
-		(!dialogueItem.needShowOptions() and !dialogueItem.hasOptionNo()):
-		hasNoDialogue()
+	#没有说话信息
+	if dialogueItem==null or dialogueItem.text.empty():
 		return
-	if dialogueItem.option1 == null and dialogueItem.option2 == null \
-	and dialogueItem.option3 == null and dialogueItem.option4 == null \
-	and dialogueItem.optionNo == null:
-		hasNoDialogue()
-		return
+
 	# 设置气泡的位置
-	var size = sprite.get_rect().size * sprite.transform.get_scale()
-	var p = parent.global_position + Vector2(size.x / 2 , -size.y)
-	dialoguePanel.set_global_position(p)
 	dialoguePanel.setText(dialogueItem)
+	var size = sprite.get_rect().size * sprite.transform.get_scale()
+	var p = parent.global_position + Vector2(-dialoguePanel.rect_size.x/2 , -size.y - dialoguePanel.rect_size.y)
+	dialoguePanel.set_global_position(p)
 	# 更新玩家愤怒值
 	settlementData.playerMood += (dialogueItem.mood as int)
 	

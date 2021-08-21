@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scences/Option/OptionPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scences/World/World.gd" type="Script" id=2]
-[ext_resource path="res://Scences/Dialogue/DialoguePanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scences/Settlement/Settlement.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scences/Menu/Menu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Images/bg.png" type="Texture" id=6]
@@ -74,9 +73,6 @@ margin_left = 123.16
 margin_top = 366.603
 margin_right = -556.84
 margin_bottom = -53.3973
-
-[node name="DialoguePanel" parent="UILayer" instance=ExtResource( 3 )]
-visible = false
 
 [node name="SettlementPanel" parent="UILayer" instance=ExtResource( 4 )]
 visible = false

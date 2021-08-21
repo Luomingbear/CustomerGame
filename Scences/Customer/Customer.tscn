@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Images/c1.png" type="Texture" id=1]
 [ext_resource path="res://Scences/Customer/MoveController.gd" type="Script" id=2]
 [ext_resource path="res://Scences/Customer/DialogueConroller.gd" type="Script" id=3]
 [ext_resource path="res://Scences/Customer/Customer.gd" type="Script" id=4]
+[ext_resource path="res://Scences/Dialogue/DialoguePanel.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 32.0425
@@ -35,6 +36,17 @@ cast_to = Vector2( 220, 100 )
 collision_mask = 2
 
 [node name="DialogueConroller" type="Node2D" parent="."]
+position = Vector2( -200, -400 )
 script = ExtResource( 3 )
+
+[node name="DialoguePanel" parent="DialogueConroller" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 500.0
+margin_bottom = 61.0
 
 [connection signal="need_speak_signal" from="MoveController" to="DialogueConroller" method="_on_MoveController_need_speak_signal"]

@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scences/Customer/Customer.gd"
 }, {
-"base": "PanelContainer",
+"base": "Control",
 "class": "CustomerDialogue",
 "language": "GDScript",
 "path": "res://Scences/Dialogue/DialguePanel.gd"

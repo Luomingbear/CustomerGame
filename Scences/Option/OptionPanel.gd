@@ -13,8 +13,6 @@ onready var animatonPlayer = $AnimationPlayer
 onready var timer = $Timer
 onready var hero : Hero = get_tree().current_scene.find_node("Hero") as Hero
 
-onready var customerDialogue = get_tree().current_scene.find_node("DialoguePanel")
-
 
 var selectOption: OptionData = null
 const DEFAULT_WAIT_TIME = 15 # 选项等待时间，超过这个时间会强制选择【未选择】选项
@@ -47,8 +45,7 @@ func showOptions(options: DialogueData):
 		visible = true
 	
 func chooseNoOption():
-	if !option1.visible and !option2.visible and !option3.visible and !option4.visible:
-		makeChoose(selectOption)
+	makeChoose(selectOption)
 	
 		
 func _process(delta):
@@ -68,7 +65,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func makeChoose(optionData: OptionData):
 	selectOption = optionData
 	animatonPlayer.play("OptionsHide")
-	customerDialogue.hideDialogue(optionData)
 	visible = false
 	time = DEFAULT_WAIT_TIME
 	

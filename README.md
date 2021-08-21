@@ -60,3 +60,17 @@ brew install --cask godot
 ]
 ```
 
+## 对话显示逻辑
+
+游戏里面涉及到玩家和客户，他们都有说话的能力。层级关系如下：
+
+```js
+World
+----Customer
+    |----CustomerDialogue
+----Hero
+    |----HeroDialogue
+```
+
+当客户进入了场景中心，就会开始说话，当客户说话完毕之后，发送通知显示选项
+

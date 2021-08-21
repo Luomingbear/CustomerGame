@@ -53,6 +53,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	elif anim_name == "HeroDialogHide":
 		var hero = get_parent() as Hero
 		hero.afterDialogueHide(optionData)
+		optionData = null
 
 
 func _on_Timer_timeout():
