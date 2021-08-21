@@ -37,7 +37,7 @@ func getNextRole()-> RoleData:
 
 func loadDataFromDisk():
 	print("从磁盘加载角色数据")
-	var roleDic = fileManager.parseCsvFile("res://test.csv")
+	var roleDic = fileManager.parseCsvFile("res://game.csv")
 	if roleDic != null:
 		roleList = roleDic.values()
 	nextRoleIndex = 0

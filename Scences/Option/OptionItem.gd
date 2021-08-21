@@ -10,7 +10,7 @@ onready var button = $Button
 
 func setOptionData(data: OptionData):
 	optionItemData = data
-	button.text = data.get("text")
+	button.text = data.hint
 	
 	
 func _input(event):
@@ -26,5 +26,5 @@ func isEventInRect()-> bool:
 # 按钮点击
 func _on_Button_button_down():
 	if optionItemData != null:
-		print("跳转："+optionItemData.jump +", 你选择了:"+optionItemData.text)
+		print("跳转："+optionItemData.jump +", 你选择了:"+optionItemData.hint)
 		emit_signal("make_choose_item", optionItemData)

@@ -51,12 +51,14 @@ default_font = ExtResource( 3 )
 
 [node name="OptionPanel" type="Control"]
 light_mask = 16
+anchor_left = 0.000466251
 anchor_top = 0.000665326
-anchor_right = 1.0
+anchor_right = 1.00047
 anchor_bottom = 1.00067
-margin_top = -0.479034
-margin_right = -680.0
-margin_bottom = -420.479
+margin_left = -0.596802
+margin_top = -0.479035
+margin_right = -680.597
+margin_bottom = -420.482
 rect_min_size = Vector2( 500, 300 )
 script = ExtResource( 2 )
 __meta__ = {

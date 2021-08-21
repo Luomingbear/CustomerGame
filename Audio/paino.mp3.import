@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/paino.mp3-8f80eb3e030e75db2cb0003ec43ae19f.mp3str"
+
+[deps]
+
+source_file="res://Audio/paino.mp3"
+dest_files=[ "res://.import/paino.mp3-8f80eb3e030e75db2cb0003ec43ae19f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
