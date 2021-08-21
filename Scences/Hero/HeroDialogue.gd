@@ -10,7 +10,7 @@ onready var timer = $Timer
 var textVisiableLength = 0 #可以看见的文字输量
 var isTyping = false # 是否正在执行打字机效果
 var time = 0
-
+var optionData: OptionData = null
 
 func _ready():
 	textLabel.bbcode_text = ""
@@ -18,11 +18,13 @@ func _ready():
 	visible = false
 
 # 显示对话框
-func showDialogue(optionData:OptionData):
-	if optionData == null or optionData.text.empty():
-		return 
+func showDialogue(option: OptionData):
+	if option == null or option.text.empty():
+		return
+	optionData = option
 	visible = true
 	textVisiableLength = 0
+	textLabel.visible_characters = textVisiableLength	
 	textLabel.bbcode_text = optionData.text
 	animationPlayer.play("HeroDialogShow")
 	print("播放显示主角对话动画")
@@ -42,8 +44,7 @@ func _process(delta):
 	if  textVisiableLength > len(textLabel.bbcode_text):
 		isTyping = false
 		print("主角打字机结束")
-		
-		#timer.start(1)
+		timer.start(1)
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "HeroDialogShow":
@@ -51,7 +52,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		print("主角对话显示动画结束")
 		
 	elif anim_name == "HeroDialogHide":
-		visible = false
+		var hero = get_parent() as Hero
+		hero.afterDialogueHide(optionData)
 
 
 func _on_Timer_timeout():

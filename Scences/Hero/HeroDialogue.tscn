@@ -64,6 +64,7 @@ visible = false
 script = ExtResource( 2 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.333333 )
 margin_right = 400.0
 margin_bottom = 50.0
 __meta__ = {
@@ -87,6 +88,7 @@ anims/HeroDialogHide = SubResource( 2 )
 anims/HeroDialogShow = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

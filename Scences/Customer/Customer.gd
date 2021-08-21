@@ -2,6 +2,7 @@
 
 extends KinematicBody2D
 
+class_name Customer
 
 onready var moveController = $MoveController 
 onready var dialogueContronller = $DialogueConroller 

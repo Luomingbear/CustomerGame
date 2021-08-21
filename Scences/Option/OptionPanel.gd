@@ -4,8 +4,6 @@ extends Control
 
 class_name  OptionPanel
 
-signal make_choose(optionData)
-
 onready var option1 : CanvasItem = $Option1
 onready var option2 : CanvasItem = $Option2
 onready var option3 : CanvasItem = $Option3

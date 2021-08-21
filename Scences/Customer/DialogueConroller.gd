@@ -12,12 +12,12 @@ var isShowDialogue = false
 onready var parent : Node2D = get_parent()
 onready var dialoguePanel = get_tree().current_scene.find_node("DialoguePanel")
 onready var sprite : Sprite = get_node("../Sprite")
-onready var optionPanel = get_tree().current_scene.find_node("OptionPanel")
+onready var hero = get_tree().current_scene.find_node("Hero")
 onready var settlementPanel = get_tree().current_scene.find_node("SettlementPanel")
 
 
-#func _ready():
-#	optionPanel.connect("make_choose2",self,"makeChoose")
+func _ready():
+	hero.connect("hero_make_choose",self,"makeChoose")
 
 
 # 显示对话气泡
@@ -94,8 +94,8 @@ func makeChoose(selectOption: OptionData):
 		return
 	isShowDialogue = false
 	settlementData.customerMood += (selectOption.mood as int) # 更新客户的愤怒值
-	#roleData.dialogueIndex = selectOption.jump
+	roleData.dialogueIndex = selectOption.jump
 	if selectOption.jump == RETURN_GOODS:
 		settlementData.hasReturnGood = true
 	settlementData.coin += selectOption.money
-	#showDialogue()
+	showDialogue()

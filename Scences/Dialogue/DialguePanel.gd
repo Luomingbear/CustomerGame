@@ -11,7 +11,7 @@ var textVisiableLength = 0 #可以看见的文字输量
 var isTyping = false # 是否正在执行打字机效果
 
 func _ready():
-	optionPanel.connect("make_choose", self, "makeChoose")
+	#optionPanel.connect("hero_make_choose", self, "makeChoose")
 	modulate = 0
 	
 
