@@ -6,6 +6,7 @@ class_name MenuPanel
 
 var numberData : NumberData = NumberData.new()
 onready var coinText = $CoinText
+onready var moodText = $MoodText
 var gameOver = preload("res://Scences/Menu/GameOver.tscn").instance()
 
 
@@ -31,6 +32,7 @@ func checkMood(mood: int):
 
 func _process(delta):
 	coinText.bbcode_text = str(numberData.coin)
+	moodText.text = "剧情分："+str(numberData.mood)
 
 
 func _on_BackBtn_pressed():
