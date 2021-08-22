@@ -119,3 +119,8 @@ static func load_data(path: String):
 	var data = file.get_var()
 	file.close()
 	return data
+
+
+static func remove_file(path: String) -> bool:
+	var dir = Directory.new()
+	return dir.remove(path)
