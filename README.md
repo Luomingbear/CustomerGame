@@ -70,7 +70,8 @@ World
     |----CustomerDialogue
 ----Hero
     |----HeroDialogue
+----OptionPanel
 ```
 
-当客户进入了场景中心，就会开始说话，当客户说话完毕之后，发送通知显示选项
+对话框顺序：
 
