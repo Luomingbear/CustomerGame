@@ -27,7 +27,7 @@ func move(delta):
 	if rayCast.is_colliding() and not needMoveOut: # 不要挤到一起了
 		return
 	var y = sin(global_position.x / 35) * force
-	parent.move_and_slide(Vector2(speed *f orce,y))
+	parent.move_and_slide(Vector2(speed *force,y))
 	isSpeaking = false
 	
 func moveOut(roleName):

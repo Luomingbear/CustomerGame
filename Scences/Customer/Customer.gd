@@ -12,8 +12,11 @@ onready var sprite = $Sprite
 func setData(data: RoleData):
 	moveController.roleData = data
 	dialogueContronller.roleData = data
-	var texture = ImageTexture.new()
-	var image = Image.new()
-	image.load("res://Images/Customer/"+data.roleName+".png")
-	texture.create_from_image(image)
-	sprite.texture = texture
+	var path = "res://Images/Customer/"+data.roleName+".png"
+	var res = load(path)
+	if res != null:
+		var texture = ImageTexture.new()
+		var image = Image.new()
+		image.load(path)
+		texture.create_from_image(image)
+		sprite.texture = texture

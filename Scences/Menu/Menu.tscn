@@ -6,21 +6,13 @@
 [ext_resource path="res://Scences/Menu/Menu.gd" type="Script" id=4]
 [ext_resource path="res://Images/back.png" type="Texture" id=5]
 
-[node name="MenuPanel" type="Control"]
-anchor_top = 0.000763745
-anchor_bottom = 0.000763787
-margin_right = 1280.0
-margin_bottom = 720.0
+[node name="MenuPanel" type="Node2D"]
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CoinHBox" type="HBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -200.0
+margin_left = 1100.0
 margin_top = 30.0
+margin_right = 44.0
 margin_bottom = 40.0
 alignment = 1
 __meta__ = {
@@ -36,7 +28,7 @@ expand = true
 
 [node name="CoinText" type="RichTextLabel" parent="CoinHBox"]
 margin_left = 44.0
-margin_right = 200.0
+margin_right = 44.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -50,7 +42,7 @@ __meta__ = {
 [node name="MoodHBox" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -200.0
+margin_left = 1100.0
 margin_top = 100.0
 margin_bottom = 40.0
 alignment = 1
@@ -67,7 +59,7 @@ expand = true
 
 [node name="MoodText" type="RichTextLabel" parent="MoodHBox"]
 margin_left = 44.0
-margin_right = 200.0
+margin_right = 44.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )

@@ -1,6 +1,6 @@
 #菜单界面的控制脚本
 
-extends Control
+extends Node2D
 
 class_name MenuPanel
 
