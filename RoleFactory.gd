@@ -2,17 +2,19 @@ extends Node
 
 class_name RoleFactory
 
-const roleDictionary: Dictionary = {}
 const roleQueue: Array = []
 
 static func init() -> void:
-	roleDictionary.clear()
+	var roleDictionary = {}
 	roleQueue.clear()
 	var data = FileManager.parseCsvFile("res://game.csv")
-	var archive = ArchiveManager.loadArchive()
-	var currentName = archive.currentRole.roleName
-	var currentLevel = archive.currentRole.level
-	var roleList = archive.roleNameArray
+	var currentLevel = 1
+	var roleList = []
+	if ArchiveManager.hasArchive():
+		var archive = ArchiveManager.loadArchive()
+		currentLevel = archive.currentRole.level
+		roleList = archive.roleNameArray
+
 	# 按难度分组
 	for role in data.values():
 		if roleDictionary.has(role.level):
@@ -22,7 +24,8 @@ static func init() -> void:
 			array.append(role)
 			roleDictionary[role.level] = array
 	# 难度升序
-	var levelArray = roleDictionary.keys().sort()
+	var levelArray = roleDictionary.keys()
+	levelArray.sort()
 	var maxLevel = levelArray[levelArray.size() - 1]
 	if currentLevel > maxLevel:
 		return
