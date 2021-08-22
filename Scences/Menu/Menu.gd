@@ -6,17 +6,23 @@ class_name MenuPanel
 
 var numberData : NumberData = NumberData.new()
 onready var coinText = $CoinText
+var gameOver = preload("res://Scences/Menu/GameOver.tscn").instance()
 
+
+func _ready():
+	numberData.coin = 500
 
 func updateNumbear(updateNumber: NumberData):
 	print("update number, coin:"+str(numberData.coin)+", mood:"+str(numberData.mood))
 	numberData.mood += updateNumber.mood
 	numberData.coin += updateNumber.coin
+	checkCoin(numberData.coin)
 
 
 func checkCoin(coin: int):
 	if coin < 0 :
 		print("游戏结束：破产了")
+		add_child(gameOver)
 	
 func checkMood(mood: int):
 	if mood> 100 :
