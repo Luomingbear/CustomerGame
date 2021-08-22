@@ -67,7 +67,7 @@ func hideAnimationFinished():
 	
 
 
-func hideDialogue(selectOptionData):
+func hideDialogue():
 	if not visible:
 		return
 	animationPlayer.play("DialogueHide")

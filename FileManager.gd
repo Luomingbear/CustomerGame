@@ -12,28 +12,38 @@ static func getDialogueData(temp : PoolStringArray,keys) -> DialogueData:
 	dialog.option1.mood = temp[keys.find("Option1Mood")]
 	dialog.option1.hint = temp[keys.find("Option1ShowText")]
 	dialog.option1.money = temp[keys.find("Option1Money")]
-	
+	if not dialog.option1.hasContent():
+		dialog.option1 = null
+		
 	dialog.option2.text = temp[keys.find("Option2")]
 	dialog.option2.jump = temp[keys.find("Option2Jump")]
 	dialog.option2.mood = temp[keys.find("Option2Mood")]
 	dialog.option2.hint = temp[keys.find("Option2ShowText")]
 	dialog.option2.money = temp[keys.find("Option2Money")]
+	if not dialog.option2.hasContent():
+		dialog.option2 = null
 	
 	dialog.option3.text = temp[keys.find("Option3")]
 	dialog.option3.jump = temp[keys.find("Option3Jump")]
 	dialog.option3.mood = temp[keys.find("Option3Mood")]
 	dialog.option3.hint = temp[keys.find("Option3ShowText")]
 	dialog.option3.money = temp[keys.find("Option3Money")]
-	
+	if not dialog.option3.hasContent():
+		dialog.option3 = null
+		
 	dialog.option4.text = temp[keys.find("Option4")]
 	dialog.option4.jump = temp[keys.find("Option4Jump")]
 	dialog.option4.mood = temp[keys.find("Option4Mood")]
 	dialog.option4.hint = temp[keys.find("Option4ShowText")]
 	dialog.option4.money = temp[keys.find("Option4Money")]
-	
+	if not dialog.option4.hasContent():
+		dialog.option4 = null
+		
 	dialog.optionNo.jump = temp[keys.find("NoOptionJump")]
 	dialog.optionNo.mood = temp[keys.find("NoOptionMood")]
 	dialog.optionNo.money = temp[keys.find("NoOptionMoney")]
+	if not dialog.optionNo.hasContent():
+		dialog.optionNo = null
 	return dialog
 	
 

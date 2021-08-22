@@ -21,7 +21,7 @@ func _ready():
 func _process(delta):
 	time += delta
 	if time > CREATE_CUSTOMER_DELAY:
-		if layer.get_child_count() < 4:
+		if layer.get_child_count() < 1:
 			time = 0
 			# 每隔CREATE_CUSTOMER_DELAY就创建一个客户到场景里面
 			createCustomer(getNextRole())

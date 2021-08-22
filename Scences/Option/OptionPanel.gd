@@ -51,7 +51,7 @@ func chooseNoOption():
 		
 func _process(delta):
 	if visible == true and isNeedShowTime:
-		timeText.bbcode_text = str(int(time)) + "秒"
+		timeText.bbcode_text = str(int(time)) + "S"
 		time -= delta
 		if time <= 0: #选择超时了，强制选择【未选择选项】
 			makeChoose(selectOption)
@@ -61,6 +61,7 @@ func _process(delta):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "OptionsHide":
 		hero.makeChoose(selectOption)
+		selectOption = null
 
 
 func makeChoose(optionData: OptionData):

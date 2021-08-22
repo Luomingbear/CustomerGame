@@ -8,6 +8,7 @@ var NOT_RETURN_GOODS = "NOT_RETURN_GOODS" #不同意退货
 var roleData: RoleData = null
 var settlementData: SettlementData = SettlementData.new()
 var isShowDialogue = false
+var needMoveOut = false
 
 onready var parent : Node2D = get_parent()
 onready var dialoguePanel = $DialoguePanel
@@ -52,11 +53,14 @@ func getDialogueItem()-> DialogueData:
 	
 func hasNoDialogue():
 	print("对话结束:"+roleData.roleName+ ",是否需要退货："+ str(roleData.isNeedReturnGoods))
+	dialoguePanel.hideDialogue()
+	isShowDialogue = false
 	if roleData.isNeedReturnGoods == true:
 		showReturnGoodsDialogue()
 		return
 	settlementPanel.showSettlement(settlementData)
 	settlementData = SettlementData.new()
+	needMoveOut = true
 	
 # 显示退货的对话
 func showReturnGoodsDialogue():
@@ -88,6 +92,11 @@ func makeChoose(selectOption: OptionData):
 	if not isShowDialogue:
 		return
 	isShowDialogue = false
+	if selectOption == null:#没有对话了
+		print("说完了")
+		hasNoDialogue()
+		return
+		
 	settlementData.customerMood += (selectOption.mood as int) # 更新客户的愤怒值
 	roleData.dialogueIndex = selectOption.jump
 	if selectOption.jump == RETURN_GOODS:

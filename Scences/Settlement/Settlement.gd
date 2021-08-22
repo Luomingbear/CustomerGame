@@ -13,7 +13,8 @@ var numberData: NumberData = NumberData.new()
 onready var animationPlayer = $Control/AnimationPlayer
 onready var coinText = $Control/HBoxContainer/CoinText
 onready var evaluateTexture = $Control/EvaluateTexture
-onready var menuManager :MenuPanel = get_tree().current_scene.find_node("MenuPanel") as MenuPanel
+onready var worldScene = get_tree().root.get_node("World")
+onready var menuManager :MenuPanel = worldScene.find_node("MenuPanel") as MenuPanel
 
 func _ready():
 	modulate = 0
