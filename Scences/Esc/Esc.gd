@@ -2,8 +2,20 @@
  
 extends Control
 
-
-
 func _on_TextureButton_button_up():
 	print("esc 回到开始页面")
-	get_tree()
+	get_tree().paused = false
+	var world = get_tree().root.get_node("World")
+	world.queue_free()
+	
+
+
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_ESCAPE:
+			if visible:
+				visible = false
+				get_tree().paused = false
+			else:
+				visible = true
+				get_tree().paused = true

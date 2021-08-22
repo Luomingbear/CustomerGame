@@ -54,4 +54,3 @@ func createCustomer(roleData: RoleData):
 	layer.add_child(customer)
 	customer.global_position = Vector2(-100, 550)
 	customer.setData(roleData)
-	
