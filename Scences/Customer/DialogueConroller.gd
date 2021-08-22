@@ -12,8 +12,9 @@ var isShowDialogue = false
 onready var parent : Node2D = get_parent()
 onready var dialoguePanel = $DialoguePanel
 onready var sprite : Sprite = get_node("../Sprite")
-onready var hero = get_tree().current_scene.find_node("Hero")
-onready var settlementPanel = get_tree().current_scene.find_node("SettlementPanel")
+onready var worldScene = get_tree().root.get_node("World")
+onready var hero = worldScene.find_node("Hero")
+onready var settlementPanel = worldScene.find_node("SettlementPanel")
 
 
 func _ready():

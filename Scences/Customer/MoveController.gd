@@ -14,10 +14,11 @@ var needMoveOut = false # 需要离开场景
 var roleData : RoleData
 onready var parent : KinematicBody2D = get_parent()
 onready var rayCast = $RayCast2D
-onready var roleLayer = get_tree().current_scene.find_node("CustomerLayer")
+onready var worldScene = get_tree().root.get_node("World")
+onready var roleLayer = worldScene.find_node("CustomerLayer")
 
 func _ready():
-	var settlePanel = get_tree().current_scene.find_node("SettlementPanel")
+	var settlePanel = worldScene.find_node("SettlementPanel")
 	settlePanel.connect("need_move_out", self, "moveOut")
 
 func move(delta):

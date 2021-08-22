@@ -11,7 +11,8 @@ onready var option4 : CanvasItem = $Option4
 onready var timeText = $TimeText
 onready var animatonPlayer = $AnimationPlayer
 onready var timer = $Timer
-onready var hero : Hero = get_tree().current_scene.find_node("Hero") as Hero
+onready var worldScene = get_tree().root.get_node("World")
+onready var hero : Hero = worldScene.find_node("Hero") as Hero
 
 
 var selectOption: OptionData = null

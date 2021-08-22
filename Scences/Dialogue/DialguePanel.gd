@@ -4,7 +4,8 @@ class_name CustomerDialogue
 
 onready var animationPlayer:AnimationPlayer = $AnimationPlayer
 onready var textLabel = $VBoxContainer/PanelContainer/RichTextLabel
-onready var optionPanel : OptionPanel = get_tree().current_scene.find_node("OptionPanel") as OptionPanel
+onready var worldScene = get_tree().root.get_node("World")
+onready var optionPanel :OptionPanel  =worldScene.find_node("OptionPanel") as OptionPanel
 onready var timer = $Timer
 
 const DEFAULT_OPTION_SHOW_TIME = 3 # 没有选项的时候，客户说话的间隔时间
