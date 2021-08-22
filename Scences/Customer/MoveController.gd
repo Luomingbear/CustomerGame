@@ -5,7 +5,7 @@ extends Node2D
 
 signal need_speak_signal(roleName)
 
-var force = 100
+var force = 80
 var speed = 5 # 移动速度的比例
 var isSpeaking = false # 是否正在说话
 var needMoveOut = false # 需要离开场景
@@ -21,11 +21,13 @@ func _ready():
 	var settlePanel = worldScene.find_node("SettlementPanel")
 	settlePanel.connect("need_move_out", self, "moveOut")
 
+
 func move(delta):
 	var space_state = rayCast.get_world_2d().direct_space_state
 	if rayCast.is_colliding() and not needMoveOut: # 不要挤到一起了
 		return
-	parent.move_and_slide(Vector2(speed*force,0))
+	var y = sin(global_position.x / 35) * force
+	parent.move_and_slide(Vector2(speed *f orce,y))
 	isSpeaking = false
 	
 func moveOut(roleName):

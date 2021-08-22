@@ -35,7 +35,7 @@ cast_to = Vector2( 220, 100 )
 collision_mask = 2
 
 [node name="DialogueConroller" type="Node2D" parent="."]
-position = Vector2( -200, -500 )
+position = Vector2( -200, -400 )
 script = ExtResource( 3 )
 
 [node name="DialoguePanel" parent="DialogueConroller" instance=ExtResource( 5 )]
@@ -47,7 +47,5 @@ margin_left = 0.0
 margin_top = 0.0
 margin_right = 500.0
 margin_bottom = 61.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="need_speak_signal" from="MoveController" to="DialogueConroller" method="_on_MoveController_need_speak_signal"]
