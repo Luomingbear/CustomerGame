@@ -4,7 +4,7 @@ extends Node2D
 
 onready var Customer = load("res://Scences/Customer/Customer.tscn")
 onready var layer = $CustomerLayer
-onready var menuPanel = $UILayer/MenuPanel
+onready var menuPanel :MenuPanel = $UILayer/MenuPanel as MenuPanel
 
 var fileManager : FileManager = FileManager.new()
 var roleList: Array = []
@@ -25,7 +25,11 @@ func _process(delta):
 		if layer.get_child_count() < 1:
 			time = 0
 			# 每隔CREATE_CUSTOMER_DELAY就创建一个客户到场景里面
-			createCustomer(getNextRole())
+			var role = getNextRole()
+			if role == null:
+				showEnd()
+			else:
+				createCustomer(role)
 		
 # 获取下一个客户的信息
 func getNextRole()-> RoleData:
@@ -53,3 +57,12 @@ func createCustomer(roleData: RoleData):
 	layer.add_child(customer)
 	customer.global_position = Vector2(-100, 600)
 	customer.setData(roleData)
+
+func showEnd():
+	if menuPanel.numberData.mood > 50:
+		print("好结局")
+		get_tree().change_scene("res://Scences/Ending/EndingGood.tscn")
+	else :
+		print("坏结局")
+		get_tree().change_scene("res://Scences/Ending/EndingBad.tscn")
+		

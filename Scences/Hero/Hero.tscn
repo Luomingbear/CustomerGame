@@ -22,4 +22,4 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="HeroDialogue" parent="." instance=ExtResource( 2 )]
-position = Vector2( -320, -300 )
+position = Vector2( -321.49, -264.986 )

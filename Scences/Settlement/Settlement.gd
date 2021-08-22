@@ -42,15 +42,16 @@ func showCoin(settlementData: SettlementData, isGood: bool):
 		symbol = -1
 	var baseCoin = BASE_COIN * symbol
 	var otherCoin = settlementData.coin
-	var coin = baseCoin + evaluateCoin + otherCoin
-	coinText.bbcode_text = str(coin) +"="+ str(baseCoin) +"+"+str(evaluateCoin) + "+" + str(otherCoin)
+	var coin = otherCoin
+	#var coin = baseCoin + evaluateCoin + otherCoin
+	#coinText.bbcode_text = str(coin) +"="+ str(baseCoin) +"+"+str(evaluateCoin) + "+" + str(otherCoin)
+	coinText.bbcode_text = str(coin)
 	numberData.coin = coin
 
 # 点击了确定按钮，需要隐藏弹窗
-func _on_OKBtn_button_down():
+func _on_TextureButton_pressed():
 	animationPlayer.play("SettlementHide")
 	# 发送信号，通知客户需要离开场景了
 	emit_signal("need_move_out", roleName)
 	# 更新金币、心情值的变化
 	menuManager.updateNumbear(numberData)
-		

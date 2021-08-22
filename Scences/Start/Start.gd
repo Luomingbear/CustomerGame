@@ -5,7 +5,7 @@ onready var player = $AudioStreamPlayer2D
 
 func _ready():
 	player.play(3) #从第3秒开始播放
-	if ArchiveManager.hasArchive():
+	if false:
 		continueBtn.visible = true
 	else:
 		continueBtn.visible = false

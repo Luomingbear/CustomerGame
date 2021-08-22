@@ -6,5 +6,3 @@ class_name NumberData
 var coin: int = 0
 # 心情值
 var mood: int = 0
-
-

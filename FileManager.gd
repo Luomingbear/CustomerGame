@@ -42,8 +42,17 @@ static func getDialogueData(temp : PoolStringArray,keys) -> DialogueData:
 	dialog.optionNo.jump = temp[keys.find("NoOptionJump")]
 	dialog.optionNo.mood = temp[keys.find("NoOptionMood")]
 	dialog.optionNo.money = temp[keys.find("NoOptionMoney")]
-	if not dialog.optionNo.hasContent():
-		dialog.optionNo = null
+	if dialog.optionNo.jump.empty() :
+		if dialog.option1 != null:
+			dialog.optionNo = dialog.option1
+		if dialog.option2 != null:
+			dialog.optionNo = dialog.option2
+		if dialog.option3 != null:
+			dialog.optionNo = dialog.option3
+		if dialog.option4 != null:
+			dialog.optionNo = dialog.option4
+		else:
+			dialog.optionNo = null
 	return dialog
 	
 
