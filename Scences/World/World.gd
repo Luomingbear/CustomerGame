@@ -14,7 +14,7 @@ var CREATE_CUSTOMER_DELAY = 10 #创建新角色的时间间隔
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	loadDataFromDisk()
+	# loadDataFromDisk()
 	# 游戏开始就添加一个客户进入场景
 	createCustomer(getNextRole())
 	
@@ -28,11 +28,11 @@ func _process(delta):
 		
 # 获取下一个客户的信息
 func getNextRole()-> RoleData:
-	if nextRoleIndex < roleList.size():
-		var next = roleList[nextRoleIndex]
-		nextRoleIndex += 1
-		return next
-	return null
+	# TODO
+	var role = RoleFactory.next()
+	var archive = ArchiveData.new()
+	# ArchiveManager.saveArchive()
+	return role
 	
 
 func loadDataFromDisk():
