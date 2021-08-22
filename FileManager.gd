@@ -45,11 +45,11 @@ static func getDialogueData(temp : PoolStringArray,keys) -> DialogueData:
 	if dialog.optionNo.jump.empty() :
 		if dialog.option1 != null:
 			dialog.optionNo = dialog.option1
-		if dialog.option2 != null:
+		elif dialog.option2 != null:
 			dialog.optionNo = dialog.option2
-		if dialog.option3 != null:
+		elif dialog.option3 != null:
 			dialog.optionNo = dialog.option3
-		if dialog.option4 != null:
+		elif dialog.option4 != null:
 			dialog.optionNo = dialog.option4
 		else:
 			dialog.optionNo = null

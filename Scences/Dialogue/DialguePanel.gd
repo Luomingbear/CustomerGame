@@ -6,9 +6,7 @@ onready var animationPlayer:AnimationPlayer = $AnimationPlayer
 onready var textLabel = $VBoxContainer/PanelContainer/RichTextLabel
 onready var worldScene = get_tree().root.get_node("World")
 onready var optionPanel :OptionPanel  =worldScene.find_node("OptionPanel") as OptionPanel
-onready var timer = $Timer
 
-const DEFAULT_OPTION_SHOW_TIME = 3 # 没有选项的时候，客户说话的间隔时间
 var optionData : DialogueData
 var textVisiableLength = 0 #可以看见的文字输量
 var isTyping = false # 是否正在执行打字机效果
@@ -45,10 +43,7 @@ func _process(delta):
 			textLabel.visible_characters = textVisiableLength
 		if textLabel.visible_characters >= optionData.text.length():
 			isTyping = false
-			if optionData.needShowOptions():
-				optionPanel.showOptions(optionData)
-			else:
-				timer.start(DEFAULT_OPTION_SHOW_TIME)
+			optionPanel.showOptions(optionData)
 	
 func _input(event):
 	if event.is_pressed() and optionData != null and visible:
@@ -72,8 +67,3 @@ func hideDialogue():
 		return
 	animationPlayer.play("DialogueHide")
 	print("客户弹窗隐藏")
-
-
-func _on_Timer_timeout():
-	if not optionData.needShowOptions():
-		optionPanel.chooseNoOption()
