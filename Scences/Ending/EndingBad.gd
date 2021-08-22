@@ -39,7 +39,7 @@ func getTexturePath():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "HideAnimation":
-		if showIndex < GOOD_ENDING.size():
+		if showIndex < BAD_ENDING.size():
 			showIndex += 1
 			showTexture(getTexturePath())
 			player.play("ShowAnimation")

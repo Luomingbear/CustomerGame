@@ -9,6 +9,7 @@ onready var menuPanel :MenuPanel = $UILayer/MenuPanel as MenuPanel
 var fileManager : FileManager = FileManager.new()
 var roleList: Array = []
 var nextRoleIndex = 0
+var changeScene = false
 
 var time = 0
 var CREATE_CUSTOMER_DELAY = 10 #创建新角色的时间间隔
@@ -21,7 +22,7 @@ func _ready():
 	
 func _process(delta):
 	time += delta
-	if time > CREATE_CUSTOMER_DELAY:
+	if !changeScene and  time > CREATE_CUSTOMER_DELAY:
 		if layer.get_child_count() < 1:
 			time = 0
 			# 每隔CREATE_CUSTOMER_DELAY就创建一个客户到场景里面
@@ -59,10 +60,15 @@ func createCustomer(roleData: RoleData):
 	customer.setData(roleData)
 
 func showEnd():
+	var worldScene = get_tree().root.get_node("World")
 	if menuPanel.numberData.mood > 50:
 		print("好结局")
+		menuPanel.queue_free()
 		get_tree().change_scene("res://Scences/Ending/EndingGood.tscn")
 	else :
 		print("坏结局")
+		menuPanel.queue_free()
 		get_tree().change_scene("res://Scences/Ending/EndingBad.tscn")
+	changeScene = true
+		
 		
