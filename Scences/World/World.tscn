@@ -53,7 +53,8 @@ script = SubResource( 2 )
 [node name="CustomerLayer" type="Node2D" parent="."]
 
 [node name="Table" type="Sprite" parent="."]
-position = Vector2( 1.31534, 2.63074 )
+position = Vector2( -10, 0 )
+scale = Vector2( 1.02, 1 )
 texture = ExtResource( 6 )
 centered = false
 

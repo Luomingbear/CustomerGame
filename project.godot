@@ -99,8 +99,9 @@ _global_script_class_icons={
 [application]
 
 config/name="CustomerServices"
+config/description="猫咪拯救世界的游戏"
 run/main_scene="res://Scences/Start/Start.tscn"
-config/icon="res://icon.png"
+config/icon="res://Images/icon.png"
 
 [display]
 

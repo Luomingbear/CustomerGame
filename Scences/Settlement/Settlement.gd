@@ -10,9 +10,8 @@ var BASE_COIN = 10 # 一局可以获得金币的基础值
 var roleName = ""
 var numberData: NumberData = NumberData.new()
 
-onready var animationPlayer = $Control/AnimationPlayer
-onready var coinText = $Control/HBoxContainer/CoinText
-onready var evaluateTexture = $Control/EvaluateTexture
+onready var animationPlayer = $AnimationPlayer
+onready var coinText = $CoinText
 onready var worldScene = get_tree().root.get_node("World")
 onready var menuManager :MenuPanel = worldScene.find_node("MenuPanel") as MenuPanel
 
@@ -24,26 +23,9 @@ func _ready():
 func showSettlement(data: SettlementData):
 	roleName = data.roleName
 	numberData.mood = data.customerMood
-	var isGood = showEvaluate(data.customerMood)
-	showCoin(data, isGood)
+	showCoin(data, true)
 	animationPlayer.play("SettlementShow")
 
-func showEvaluate(customerMood: int):
-	print("显示评价动画")
-	var texture = ImageTexture.new()
-	var image = Image.new()
-	
-	if customerMood == null or customerMood > EVALUATE_NUM: # 差评
-		image.load("res://Images/chaping.png")
-		texture.create_from_image(image)
-		evaluateTexture.texture = texture
-		return false
-	else: # 好评
-		image.load("res://Images/haoping.png")
-		texture.create_from_image(image)
-		evaluateTexture.texture = texture
-		return true
-		
 func onSettlementShowAnimationFinished():
 	# 弹窗显示之后播放评价的动画
 	animationPlayer.play("EvaluateShow")
@@ -67,7 +49,6 @@ func showCoin(settlementData: SettlementData, isGood: bool):
 # 点击了确定按钮，需要隐藏弹窗
 func _on_OKBtn_button_down():
 	animationPlayer.play("SettlementHide")
-	evaluateTexture.modulate = 0
 	# 发送信号，通知客户需要离开场景了
 	emit_signal("need_move_out", roleName)
 	# 更新金币、心情值的变化

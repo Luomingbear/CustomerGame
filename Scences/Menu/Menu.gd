@@ -5,8 +5,7 @@ extends Node2D
 class_name MenuPanel
 
 var numberData : NumberData = NumberData.new()
-onready var coinText = $CoinHBox/CoinText
-onready var moodText = $MoodHBox/MoodText
+onready var coinText = $CoinText
 
 
 func updateNumbear(updateNumber: NumberData):
@@ -26,7 +25,6 @@ func checkMood(mood: int):
 
 func _process(delta):
 	coinText.bbcode_text = str(numberData.coin)
-	moodText.bbcode_text = str(numberData.mood)
 
 
 func _on_BackBtn_pressed():
