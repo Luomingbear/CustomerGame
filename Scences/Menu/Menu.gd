@@ -27,3 +27,10 @@ func checkMood(mood: int):
 func _process(delta):
 	coinText.bbcode_text = str(numberData.coin)
 	moodText.bbcode_text = str(numberData.mood)
+
+
+func _on_BackBtn_pressed():
+	print("esc 回到开始页面")
+	get_tree().paused = false
+	var world = get_tree().root.get_node("World")
+	world.queue_free()
