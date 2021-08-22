@@ -7,7 +7,7 @@ static func createArchive() -> ArchiveData:
 	return ArchiveData.new()
 
 static func loadArchive() -> ArchiveData:
-	return FileManager.load_data("user://archive.save") as ArchiveData
+	return FileManager.load_data("user://archive.save")
 
 static func saveArchive(state: NumberData, role: RoleData):
 	var oldArchive = loadArchive()

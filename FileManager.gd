@@ -125,9 +125,12 @@ static func save_data(path: String, data) -> void:
 static func load_data(path: String):
 	var file = File.new()
 	file.open(path, File.READ)
-	var data = file.get_var()
+	var object = file.get_var()
 	file.close()
-	return data
+	if object == null:
+		return null
+	else:
+		return instance_from_id(object.get_object_id())
 
 
 static func remove_file(path: String) -> bool:
