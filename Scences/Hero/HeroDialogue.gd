@@ -44,7 +44,7 @@ func _process(delta):
 	if  textVisiableLength > len(textLabel.bbcode_text):
 		isTyping = false
 		print("主角打字机结束")
-		timer.start(1)
+		timer.start(2)
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "HeroDialogShow":

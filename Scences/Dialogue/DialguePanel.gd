@@ -41,7 +41,7 @@ func _process(delta):
 		time += delta
 		if optionData.text != null && time > 0.1: 
 			time = 0
-			textVisiableLength += 1
+			textVisiableLength += 2
 			textLabel.visible_characters = textVisiableLength
 		if textLabel.visible_characters >= optionData.text.length():
 			isTyping = false
