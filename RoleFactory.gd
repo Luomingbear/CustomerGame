@@ -7,7 +7,7 @@ const roleQueue: Array = []
 static func init(archive: ArchiveData = null) -> void:
 	var roleDictionary = {}
 	roleQueue.clear()
-	var data = FileManager.parseCsvFile("res://game.csv")
+	var data = FileManager.parseCsvFile("res://data/game.csv")
 	var currentLevel = 0
 	var roleList = []
 	if archive != null:
@@ -37,7 +37,7 @@ static func init(archive: ArchiveData = null) -> void:
 		if tempRoleArray == null:
 			continue
 		for role in tempRoleArray:
-			if level == currentLevel and roleList.has(role.roleName):
+			if level == currentLevel and roleList.size() > 0 and roleList.has(role.roleName):
 				continue
 			roleQueue.push_back(role)
 		level = level + 1
