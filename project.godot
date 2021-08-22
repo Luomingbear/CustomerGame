@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="CustomerServices"
-run/main_scene="res://Scences/World.tscn"
+run/main_scene="res://Scences/Start/Start.tscn"
 config/icon="res://icon.png"
 
 [display]
