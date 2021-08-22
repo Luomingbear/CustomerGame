@@ -27,9 +27,7 @@ func _process(delta):
 			time = 0
 			# 每隔CREATE_CUSTOMER_DELAY就创建一个客户到场景里面
 			var role = getNextRole()
-			if role == null:
-				showEnd()
-			else:
+			if role != null:
 				createCustomer(role)
 		
 # 获取下一个客户的信息
@@ -58,17 +56,5 @@ func createCustomer(roleData: RoleData):
 	layer.add_child(customer)
 	customer.global_position = Vector2(-100, 600)
 	customer.setData(roleData)
-
-func showEnd():
-	var worldScene = get_tree().root.get_node("World")
-	if menuPanel.numberData.mood > 50:
-		print("好结局")
-		menuPanel.queue_free()
-		get_tree().change_scene("res://Scences/Ending/EndingGood.tscn")
-	else :
-		print("坏结局")
-		menuPanel.queue_free()
-		get_tree().change_scene("res://Scences/Ending/EndingBad.tscn")
-	changeScene = true
 		
 		

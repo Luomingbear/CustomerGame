@@ -27,9 +27,10 @@ func showTexture(path):
 	textRect.texture = texture
 
 func _gui_input(event):
-	if showIndex == GOOD_ENDING.size() - 1:
-		return null
 	if event.is_pressed():
+		if showIndex == GOOD_ENDING.size() - 1:
+			get_tree().change_scene("res://Scences/Start/Start.tscn")
+			return null
 		player.play("HideAnimation")
 
 

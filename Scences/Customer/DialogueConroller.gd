@@ -4,6 +4,8 @@ extends Node2D
 
 var RETURN_GOODS = "RETURN_GOODS" #同意退货
 var NOT_RETURN_GOODS = "NOT_RETURN_GOODS" #不同意退货
+var BAD_ENDING = "BAD_ENDING" #坏结局
+var GOOD_ENDING = "GOOD_ENDING" #好结局
 
 var roleData: RoleData = null
 var settlementData: SettlementData = SettlementData.new()
@@ -101,5 +103,17 @@ func makeChoose(selectOption: OptionData):
 	roleData.dialogueIndex = selectOption.jump
 	if selectOption.jump == RETURN_GOODS:
 		settlementData.hasReturnGood = true
+	elif selectOption.jump == GOOD_ENDING or selectOption.jump == BAD_ENDING:
+		showEnd(selectOption.jump)
 	settlementData.coin += selectOption.money
 	showDialogue()
+
+func showEnd(jump):
+	if jump == GOOD_ENDING:
+		print("好结局")
+		get_tree().change_scene("res://Scences/Ending/EndingGood.tscn")
+		worldScene.queue_free()
+	else :
+		print("坏结局")
+		get_tree().change_scene("res://Scences/Ending/EndingBad.tscn")
+		worldScene.queue_free()
