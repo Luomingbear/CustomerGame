@@ -11,10 +11,8 @@ static func loadArchive() -> ArchiveData:
 static func saveArchive(state: NumberData, role: RoleData, roleList: PoolStringArray):
 	var archive = ArchiveData.new()
 	archive.state = state
-	archive.currentRole = {
-		"roleName" : role.roleName,
-		"level" : role.level
-	}
+	archive.currentRole.roleName = role.roleName
+	archive.currentRole.level = role.level
 	archive.roleNameArray = roleList
 	FileManager.save_data("user://archive.save", archive)
 	
