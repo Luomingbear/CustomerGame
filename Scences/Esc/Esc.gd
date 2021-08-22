@@ -2,13 +2,16 @@
  
 extends Control
 
+func _ready():
+	visible = false
+
 func _on_TextureButton_button_up():
+	if visible == false:
+		return
 	print("esc 回到开始页面")
 	get_tree().paused = false
 	var world = get_tree().root.get_node("World")
 	world.queue_free()
-	
-
 
 func _unhandled_input(event):
 	if event is InputEventKey:

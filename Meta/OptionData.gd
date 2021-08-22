@@ -9,4 +9,4 @@ var money: int = 0
 var hint: String = "" #选项显示的概要文字
 
 func hasContent()-> bool:
-	return !text.empty() or !jump.empty()
+	return !text.empty()

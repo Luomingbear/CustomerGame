@@ -25,7 +25,7 @@ func _ready():
 	modulate = 0
 
 func showOptionItem(option: CanvasItem, data: OptionData):
-	if data == null or data.text == null or data.text.length() == 0:
+	if data == null or data.text.empty():
 		option.visible = false
 	else:
 		option.visible = true
