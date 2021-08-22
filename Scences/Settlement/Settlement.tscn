@@ -1,11 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Themes/DialogTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scences/Settlement/Settlement.gd" type="Script" id=2]
 [ext_resource path="res://Images/chaping.png" type="Texture" id=3]
 [ext_resource path="res://Images/coin.png" type="Texture" id=4]
-[ext_resource path="res://Fonts/PixelFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/DinkieBitmap-9px.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Themes/Coin.tres" type="Theme" id=6]
+
+[sub_resource type="DynamicFont" id=4]
+resource_name = "PixcelFont"
+size = 20
+font_data = ExtResource( 5 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "EvaluateShow"
@@ -236,7 +241,7 @@ rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 6 )
-custom_fonts/mono_font = ExtResource( 5 )
+custom_fonts/mono_font = SubResource( 4 )
 custom_colors/default_color = Color( 1, 0.890196, 0, 1 )
 bbcode_text = "100=10+21"
 text = "100=10+21"

@@ -41,3 +41,7 @@ static func init() -> void:
 
 static func next() -> RoleData:
 	return roleQueue.pop_front()
+
+static func hasNext()-> bool:
+	return roleQueue.size() > 0
+

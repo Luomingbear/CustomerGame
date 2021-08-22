@@ -71,3 +71,4 @@ func _on_OKBtn_button_down():
 	emit_signal("need_move_out", roleName)
 	# 更新金币、心情值的变化
 	menuManager.updateNumbear(numberData)
+		

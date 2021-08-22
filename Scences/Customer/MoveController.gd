@@ -14,6 +14,7 @@ var needMoveOut = false # 需要离开场景
 var roleData : RoleData
 onready var parent : KinematicBody2D = get_parent()
 onready var rayCast = $RayCast2D
+onready var roleLayer = get_tree().current_scene.find_node("CustomerLayer")
 
 func _ready():
 	var settlePanel = get_tree().current_scene.find_node("SettlementPanel")
@@ -52,7 +53,12 @@ func _physics_process(delta):
 	elif bodyX < centerX * 2.5:
 		move(delta)
 	else:
+		# 判断是否还有下一个角色，没有的话就需要显示ending了
+		checkHasEnding()
 		parent.queue_free()
 
-
-
+func checkHasEnding():
+	var queneEmpty = RoleFactory.hasNext()
+	var roleCount = roleLayer.get_child_count()
+	if roleCount == 0 and queneEmpty:
+		print("显示ending") 
