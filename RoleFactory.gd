@@ -8,7 +8,7 @@ static func init(archive: ArchiveData = null) -> void:
 	var roleDictionary = {}
 	roleQueue.clear()
 	var data = FileManager.parseCsvFile("res://data/game.csv")
-	var currentLevel = 3
+	var currentLevel = -1
 	var roleList = []
 	if archive != null:
 		currentLevel = archive.currentRole.level
