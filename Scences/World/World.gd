@@ -4,6 +4,7 @@ extends Node2D
 
 onready var Customer = load("res://Scences/Customer/Customer.tscn")
 onready var layer = $CustomerLayer
+onready var menuPanel = $UILayer/MenuPanel
 
 var fileManager : FileManager = FileManager.new()
 var roleList: Array = []
@@ -29,6 +30,7 @@ func _process(delta):
 # 获取下一个客户的信息
 func getNextRole()-> RoleData:
 	# TODO
+	menuPanel.numberData # 这个就是当前的金币等数据
 	var role = RoleFactory.next()
 	var archive = ArchiveData.new()
 	# ArchiveManager.saveArchive()
