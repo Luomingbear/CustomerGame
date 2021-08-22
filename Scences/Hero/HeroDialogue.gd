@@ -15,6 +15,7 @@ func _ready():
 	textLabel.bbcode_text = ""
 	textLabel.visible_characters = textVisiableLength
 	visible = false
+	modulate = 0
 
 # 显示对话框
 func showDialogue(option: OptionData):
