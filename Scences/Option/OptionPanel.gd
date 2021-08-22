@@ -10,7 +10,6 @@ onready var option3 : CanvasItem = $Option3
 onready var option4 : CanvasItem = $Option4
 onready var timeText = $TimeText
 onready var animatonPlayer = $AnimationPlayer
-onready var timer = $Timer
 onready var worldScene = get_tree().root.get_node("World")
 onready var hero : Hero = worldScene.find_node("Hero") as Hero
 
@@ -25,7 +24,7 @@ func _ready():
 	modulate = 0
 
 func showOptionItem(option: CanvasItem, data: OptionData):
-	if data == null or data.text.empty():
+	if data == null:
 		option.visible = false
 	else:
 		option.visible = true

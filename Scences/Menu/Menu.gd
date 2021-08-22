@@ -31,6 +31,5 @@ func _process(delta):
 
 func _on_BackBtn_pressed():
 	print("esc 回到开始页面")
-	get_tree().paused = false
 	var world = get_tree().root.get_node("World")
 	world.queue_free()

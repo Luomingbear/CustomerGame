@@ -7,7 +7,10 @@ var optionItemData :OptionData = null
 
 func setOptionData(data: OptionData):
 	optionItemData = data
-	text = data.hint
+	if not data.hint.empty():
+		text = data.hint
+	else:
+		visible = false
 
 
 func _on_OptionItem_button_up():
