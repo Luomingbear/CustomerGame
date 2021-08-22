@@ -3,7 +3,7 @@ extends Node2D
 onready var continueBtn = $Control/ContinueBtn
 
 func _ready():
-	#RoleFactory.init()
+	RoleFactory.init()
 	if ArchiveManager.hasArchive():
 		continueBtn.visible = true
 	else:
