@@ -3,7 +3,7 @@
 extends Node2D
 
 
-onready var textLabel = $PanelContainer/RichTextLabel
+onready var textLabel = $VBoxContainer/PanelContainer/RichTextLabel
 onready var animationPlayer = $AnimationPlayer
 onready var timer = $Timer
 var textVisiableLength = 0 #可以看见的文字输量

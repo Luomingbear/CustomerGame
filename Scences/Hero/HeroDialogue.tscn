@@ -1,22 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Themes/DialogTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scences/Hero/HeroDialogue.gd" type="Script" id=2]
 [ext_resource path="res://Images/diague_hero.png" type="Texture" id=3]
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 609, 175 )
-margin_left = 20.0
-margin_right = 20.0
-margin_top = 20.0
-margin_bottom = 20.0
+[ext_resource path="res://Images/arrow_hero.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "HeroDialogHide"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("PanelContainer:modulate")
+tracks/0/path = NodePath("VBoxContainer/PanelContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -43,7 +36,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("PanelContainer:modulate")
+tracks/0/path = NodePath("VBoxContainer/PanelContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -67,21 +60,47 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 609, 175 )
+margin_left = 20.0
+margin_right = 20.0
+margin_top = 20.0
+margin_bottom = 20.0
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
 [node name="HeroDialogue" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-margin_right = 400.0
-margin_bottom = 50.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/HeroDialogHide = SubResource( 1 )
+anims/HeroDialogShow = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 500.0
+margin_bottom = 126.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 62.0
 custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 380.0
+margin_right = 480.0
 margin_bottom = 42.0
 theme = ExtResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
@@ -91,12 +110,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/HeroDialogHide = SubResource( 1 )
-anims/HeroDialogShow = SubResource( 2 )
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 66.0
+margin_right = 500.0
+margin_bottom = 136.0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 300
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer"]
+margin_left = 300.0
+margin_right = 500.0
+margin_bottom = 70.0
+texture = ExtResource( 4 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

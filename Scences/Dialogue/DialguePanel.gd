@@ -3,7 +3,7 @@ extends Control
 class_name CustomerDialogue
 
 onready var animationPlayer:AnimationPlayer = $AnimationPlayer
-onready var textLabel = $PanelContainer/RichTextLabel
+onready var textLabel = $VBoxContainer/PanelContainer/RichTextLabel
 onready var optionPanel : OptionPanel = get_tree().current_scene.find_node("OptionPanel") as OptionPanel
 onready var timer = $Timer
 
