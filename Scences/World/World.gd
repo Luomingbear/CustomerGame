@@ -51,5 +51,5 @@ func createCustomer(roleData: RoleData):
 	print("创建角色："+ roleData.get("roleName"))
 	var customer : Node2D = Customer.instance()
 	layer.add_child(customer)
-	customer.global_position = Vector2(-100, 550)
+	customer.global_position = Vector2(-100, 600)
 	customer.setData(roleData)
