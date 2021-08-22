@@ -5,7 +5,6 @@ onready var player = $AudioStreamPlayer2D
 
 func _ready():
 	player.play(3) #从第3秒开始播放
-	RoleFactory.init()
 	if ArchiveManager.hasArchive():
 		continueBtn.visible = true
 	else:
@@ -15,15 +14,16 @@ func _on_NewBtn_button_up():
 	if hasWorld():
 		return
 	ArchiveManager.createArchive()
+	RoleFactory.init()
 	var world = preload("res://Scences/World/World.tscn").instance()
 	get_tree().get_root().add_child(world)
-	var sc = get_tree().current_scene
 
 
 func _on_ContinueBtn_button_up():
 	if hasWorld():
 		return
-	ArchiveManager.loadArchive()
+	var archive = ArchiveManager.loadArchive()
+	RoleFactory.init(archive)
 	var world = preload("res://Scences/World/World.tscn").instance()
 	get_tree().get_root().add_child(world)
 	

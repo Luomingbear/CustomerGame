@@ -29,11 +29,10 @@ func _process(delta):
 		
 # 获取下一个客户的信息
 func getNextRole()-> RoleData:
-	# TODO
-	menuPanel.numberData # 这个就是当前的金币等数据
 	var role = RoleFactory.next()
-	var archive = ArchiveData.new()
-	# ArchiveManager.saveArchive()
+	if role != null:
+		var numberData = menuPanel.numberData
+		ArchiveManager.saveArchive(numberData, role)
 	return role
 	
 

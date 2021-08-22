@@ -4,17 +4,15 @@ class_name RoleFactory
 
 const roleQueue: Array = []
 
-static func init() -> void:
+static func init(archive: ArchiveData = null) -> void:
 	var roleDictionary = {}
 	roleQueue.clear()
 	var data = FileManager.parseCsvFile("res://game.csv")
 	var currentLevel = 1
 	var roleList = []
-	if ArchiveManager.hasArchive():
-		var archive = ArchiveManager.loadArchive()
+	if archive != null:
 		currentLevel = archive.currentRole.level
 		roleList = archive.roleNameArray
-
 	# 按难度分组
 	for role in data.values():
 		if roleDictionary.has(role.level):
