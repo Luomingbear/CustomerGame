@@ -30,6 +30,9 @@ static func init(archive: ArchiveData = null) -> void:
 	# 角色入队
 	var level = currentLevel
 	while level <= maxLevel:
+		if  not roleDictionary.has(level):
+			level = level + 1
+			continue
 		var tempRoleArray = roleDictionary[level]
 		if tempRoleArray == null:
 			continue
