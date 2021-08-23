@@ -69,10 +69,10 @@ position = Vector2( 1000, 600.23 )
 
 [node name="OptionPanel" parent="UILayer" instance=ExtResource( 1 )]
 visible = false
-margin_left = 123.16
-margin_top = 366.603
-margin_right = -556.84
-margin_bottom = -53.3973
+margin_left = 71.4032
+margin_top = 455.521
+margin_right = -548.602
+margin_bottom = -64.4824
 
 [node name="DialoguePanel" parent="UILayer" instance=ExtResource( 4 )]
 visible = false
