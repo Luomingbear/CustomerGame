@@ -36,7 +36,9 @@ func showDialogue(dialogue: DialogueData = null):
 		dialogueItem = getDialogueItem()
 	#没有说话信息
 	if dialogueItem==null or dialogueItem.text.empty():
+		#todo 这里有bug
 		print("E：啥也不需要说")
+		hasNoDialogue()
 		return
 
 	# 设置气泡的位置
