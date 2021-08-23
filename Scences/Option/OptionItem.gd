@@ -9,7 +9,7 @@ func setOptionData(data: OptionData):
 	optionItemData = data
 	if not data.hint.empty():
 		text = data.hint
-	if not data.text.empty():
+	elif not data.text.empty():
 		text = data.text
 	else:
 		visible = false

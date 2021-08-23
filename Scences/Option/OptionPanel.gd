@@ -15,7 +15,7 @@ onready var hero : Hero = worldScene.find_node("Hero") as Hero
 onready var timer = $Timer
 
 var selectOption: OptionData = null
-const DEFAULT_WAIT_TIME = 15 # 选项等待时间，超过这个时间会强制选择【未选择】选项
+const DEFAULT_WAIT_TIME = 60 # 选项等待时间，超过这个时间会强制选择【未选择】选项
 const DEFAULT_OPTION_SHOW_TIME = 2 # 没有选项的时候，客户说话的间隔时间
 var time = DEFAULT_WAIT_TIME
 var isNeedShowTime = true # 是否需要显示倒计时，退货不显示倒计时？

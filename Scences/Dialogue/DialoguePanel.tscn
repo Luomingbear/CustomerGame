@@ -125,10 +125,10 @@ margin_top = 80.0
 margin_right = 600.0
 margin_bottom = 136.0
 custom_constants/margin_top = -10
-custom_constants/margin_left = 300
+custom_constants/margin_left = 250
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer"]
-margin_left = 300.0
+margin_left = 250.0
 margin_top = -10.0
 margin_right = 600.0
 margin_bottom = 56.0

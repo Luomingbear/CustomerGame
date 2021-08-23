@@ -41,7 +41,7 @@ func showDialogue(dialogue: DialogueData = null):
 	# 设置气泡的位置
 	dialoguePanel.setText(dialogueItem)
 	var size = sprite.get_rect().size * sprite.transform.get_scale()
-	var p = parent.global_position + Vector2(-dialoguePanel.rect_size.x/2 , -size.y - dialoguePanel.rect_size.y)
+	var p = parent.global_position + Vector2(-dialoguePanel.rect_size.x/2 , - size.y - dialoguePanel.rect_size.y)
 	dialoguePanel.set_global_position(p)
 	# 更新玩家愤怒值
 	settlementData.playerMood += (dialogueItem.mood as int)

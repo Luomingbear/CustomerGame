@@ -46,6 +46,6 @@ anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 500.0
-margin_bottom = 61.0
+margin_bottom = 100.0
 
 [connection signal="need_speak_signal" from="MoveController" to="DialogueConroller" method="_on_MoveController_need_speak_signal"]
