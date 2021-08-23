@@ -17,5 +17,5 @@ func setOptionData(data: OptionData):
 
 func _on_OptionItem_button_up():
 	if optionItemData != null:
-		print("跳转："+optionItemData.jump +", 你选择了:"+optionItemData.hint)
+		print("跳转："+optionItemData.jump +", 你选择了:"+optionItemData.hint+",coin:"+str(optionItemData.money)+", mood:"+str(optionItemData.mood))
 		emit_signal("make_choose_item", optionItemData)

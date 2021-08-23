@@ -21,6 +21,7 @@ func _ready():
 # 显示结算弹窗,被DialogueController调用
 # data:{ customerMood, playerMood, hasReturnGood,roleName }
 func showSettlement(data: SettlementData):
+	print("显示结算，coin:"+str(data.coin)+",mood:"+str(data.customerMood))
 	roleName = data.roleName
 	numberData.mood = data.customerMood
 	showCoin(data, true)

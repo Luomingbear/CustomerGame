@@ -28,8 +28,8 @@ func _ready():
 func showDialogue(dialogue: DialogueData = null):
 	isShowDialogue = true
 	settlementData.roleName = roleData.roleName
-	settlementData.customerMood = 0
-	settlementData.playerMood = 0
+	#settlementData.customerMood = 0
+	#settlementData.playerMood = 0
 	# 优先使用函数传进来的对话信息
 	var dialogueItem = dialogue
 	if dialogue == null:
