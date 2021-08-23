@@ -55,6 +55,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		var hero = get_parent() as Hero
 		hero.afterDialogueHide(optionData)
 		optionData = null
+		
+func _unhandled_input(event):
+	textVisiableLength = len(textLabel.bbcode_text)
 
 
 func _on_Timer_timeout():

@@ -12,6 +12,9 @@ onready var sprite = $Sprite
 func setData(data: RoleData):
 	moveController.roleData = data
 	dialogueContronller.roleData = data
+	if data.roleName.empty():
+		print("角色的图片")
+		return
 	var path = "res://Images/Customer/"+data.roleName+".png"
 	var res = load(path)
 	if res != null:

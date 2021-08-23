@@ -36,6 +36,7 @@ func showDialogue(dialogue: DialogueData = null):
 		dialogueItem = getDialogueItem()
 	#没有说话信息
 	if dialogueItem==null or dialogueItem.text.empty():
+		print("E：啥也不需要说")
 		return
 
 	# 设置气泡的位置
@@ -45,7 +46,7 @@ func showDialogue(dialogue: DialogueData = null):
 	dialoguePanel.set_global_position(p)
 	# 更新玩家愤怒值
 	settlementData.playerMood += (dialogueItem.mood as int)
-	
+	print("客户说:"+dialogueItem.text)
 	
 func getDialogueItem()-> DialogueData:
 	var dialogueMap = roleData.dialogMap
@@ -92,6 +93,7 @@ func _on_MoveController_need_speak_signal(roleName):
 
 func makeChoose(selectOption: OptionData):
 	if not isShowDialogue:
+		print("E：客户不在说话， 不能做选择")
 		return
 	isShowDialogue = false
 	if selectOption == null:#没有对话了

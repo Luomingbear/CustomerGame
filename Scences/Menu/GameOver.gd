@@ -2,7 +2,7 @@ extends Control
 
 class_name GameOver
 
-onready var button = $Panel/Button
+onready var button = $Button
 
 
 func _on_Button_pressed():
