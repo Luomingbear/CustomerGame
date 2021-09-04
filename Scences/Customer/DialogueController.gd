@@ -28,6 +28,7 @@ func _ready():
 func showDialogue(dialogue: DialogueData = null):
 	isShowDialogue = true
 	settlementData.roleName = roleData.roleName
+	settlementData.roleLevel = roleData.level
 	#settlementData.customerMood = 0
 	#settlementData.playerMood = 0
 	# 优先使用函数传进来的对话信息
@@ -35,7 +36,7 @@ func showDialogue(dialogue: DialogueData = null):
 	if dialogue == null:
 		dialogueItem = getDialogueItem()
 	#没有说话信息
-	if dialogueItem==null or dialogueItem.text.empty():
+	if dialogueItem == null or dialogueItem.text.empty():
 		#todo 这里有bug
 		print("E：啥也不需要说")
 		hasNoDialogue()

@@ -5,7 +5,7 @@ extends KinematicBody2D
 class_name Customer
 
 onready var moveController = $MoveController 
-onready var dialogueContronller = $DialogueConroller 
+onready var dialogueContronller = $DialogueController 
 onready var sprite = $Sprite
 
 # 设置角色和对话信息

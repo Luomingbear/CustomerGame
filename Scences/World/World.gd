@@ -6,7 +6,6 @@ onready var Customer = load("res://Scences/Customer/Customer.tscn")
 onready var layer = $CustomerLayer
 onready var menuPanel :MenuPanel = $UILayer/MenuPanel as MenuPanel
 
-var fileManager : FileManager = FileManager.new()
 var roleList: Array = []
 var nextRoleIndex = 0
 var changeScene = false
@@ -31,17 +30,13 @@ func _process(delta):
 				createCustomer(role)
 		
 # 获取下一个客户的信息
-func getNextRole()-> RoleData:
-	var role = RoleFactory.next()
-	if role != null:
-		var numberData = menuPanel.numberData
-		ArchiveManager.saveArchive(numberData, role)
-	return role
+func getNextRole() -> RoleData:
+	return RoleFactory.next()
 	
 
 func loadDataFromDisk():
 	print("从磁盘加载角色数据")
-	var roleDic = fileManager.parseCsvFile("res://game.csv")
+	var roleDic = FileManager.parseCsvFile("res://game.csv")
 	if roleDic != null:
 		roleList = roleDic.values()
 	nextRoleIndex = 0

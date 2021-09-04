@@ -19,12 +19,16 @@ func _ready():
 	modulate = 0
 
 # 显示结算弹窗,被DialogueController调用
-# data:{ customerMood, playerMood, hasReturnGood,roleName }
+# data:{ customerMood, playerMood, hasReturnGood, roleName, roleLevel }
 func showSettlement(data: SettlementData):
 	print("显示结算，coin:"+str(data.coin)+",mood:"+str(data.customerMood))
 	roleName = data.roleName
 	numberData.mood = data.customerMood
 	showCoin(data, true)
+	var role = RoleData.new()
+	role.roleName = data.roleName
+	role.level = data.roleLevel
+	ArchiveManager.saveArchive(numberData, role)
 	animationPlayer.play("SettlementShow")
 
 func onSettlementShowAnimationFinished():

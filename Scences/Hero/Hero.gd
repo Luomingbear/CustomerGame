@@ -15,7 +15,7 @@ func makeChoose(option: OptionData):
 		# 这个是超时自动选择
 		afterDialogueHide(option)
 	else:
-	    dialogue.showDialogue(option)
+		dialogue.showDialogue(option)
 	
 
 func afterDialogueHide(option: OptionData):

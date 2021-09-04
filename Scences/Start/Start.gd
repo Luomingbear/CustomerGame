@@ -5,10 +5,6 @@ onready var player = $AudioStreamPlayer2D
 
 func _ready():
 	player.play(3) #从第3秒开始播放
-	if false:
-		continueBtn.visible = true
-	else:
-		continueBtn.visible = false
 
 func _on_NewBtn_button_up():
 	if hasWorld():
@@ -30,3 +26,9 @@ func _on_ContinueBtn_button_up():
 func hasWorld()->bool:
 	var world =  get_tree().get_root().get_node("World")
 	return world != null
+
+func _process(delta):
+	if ArchiveManager.hasArchive():
+		continueBtn.visible = true
+	else:
+		continueBtn.visible = false
